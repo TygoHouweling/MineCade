@@ -1,6 +1,7 @@
 <?php
 
 require_once "model/DataHandler.php";
+require_once "model/Display.php";
 
 
 class HomeLogic
@@ -8,7 +9,8 @@ class HomeLogic
 
     public function __construct()
     {
-        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl", "vMVZEZsH2F");
+        $this->Display = new Display();
+        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "lennghcnl_webwolrld", "lennghcnl_admin", "admin2022");
     }
 
     public function __destruct()
@@ -19,7 +21,7 @@ class HomeLogic
     public function searchProducts($queryString)
     {
         try {
-            $sql = "SELECT * FROM products WHERE product_name LIKE ?";
+            $sql = "SELECT product_id as id, product_name, Replace(Replace(Concat('€ ', Format(`product_price`, 2)), ',', ''), '.', ',') AS `product_price`, product_categorie, product_title, product_name, product_thumbnail FROM products WHERE product_name LIKE ?";
             $results = $this->DataHandler->preparedQuery($sql, [
                 "%" . $queryString . "%",
             ]);
@@ -60,9 +62,11 @@ class HomeLogic
                     if ($dropdown) {
                         $categories .= "<a class='dropdown-item' href='index.php?op=categories&select={$item['categorie_name']}'>{$item['categorie_name']}</a>";
                     } else {
-                        $categories .= "<ul>";
-                        $categories .= "<li><a href='index.php?op=categories&select={$item['categorie_name']}'>{$item['categorie_name']}</a></li>";
+                        if($_GET['select'] == $item['categorie_name']){$active = 'active';}else{ $active ='';}
+                        $categories .= "<ul class='list-group'>";
+                        $categories .= "<a class='list-group-item list-group-item-action $active'' href='index.php?op=categories&select={$item['categorie_name']}'>{$item['categorie_name']}</a>";
                         $categories .= "</ul>";
+                        
                     }
                 }
             }
@@ -73,6 +77,16 @@ class HomeLogic
         }
     }
 
+    public function getAllCategoriesAdmin() {
+        try {
+            $sql = "SELECT * FROM  product_categories";
+            $result = $this->DataHandler->readsData($sql);
+
+            return $result;
+        } catch (Exception $e) {
+        throw $e;
+    }
+    }
 
     public function getProductsByGenre($categorie)
     {
@@ -96,23 +110,12 @@ class HomeLogic
 
 //            die($header);
             //get sql statement and put in foreach
-            $sql = "SELECT * FROM products WHERE product_categorie = '$header' limit 4";
+            $sql = "SELECT product_id as id, product_name, Replace(Replace(Concat('€ ', Format(`product_price`, 2)), ',', ''), '.', ',') AS `product_price`, product_categorie, product_title, product_name, product_thumbnail FROM products WHERE product_categorie = '$header' limit 4";
             $items = $this->DataHandler->readsData($sql);
             $items = $items->fetchall(PDO::FETCH_ASSOC);
 
             foreach ($items as $key => $item) {
-                $html .= "<div class=col-md-3>";
-                $html .= "<div class='bestseller'>";
-                $html .= "<div class='content_img'>";
-                $html .= "<a href='/web-world'>";
-                $image = $item['product_thumbnail'];
-                $html .= "<img class='bestSellerImage' src='view/assets/image/$image' alt=''></a>";
-                $html .= "<div><a href='/web-world'>Read more about this product</a></div></div>";
-                $product_name = $item['product_name'];
-                $html .= "<div class='product_title'><h4>$product_name</h4></div>";
-                $product_price = $item['product_price'];
-                $html .= "<div class='bottom_bestseller'><div class='price'><span>$product_price</span></div><div class='text-center d-md-inline'><button class='rounded-circle border-0 roundbutton'><i class='fas fa-plus fa-010' aria-hidden='true'></i></button></div></div>";
-                $html .= "</div></div>";
+                $html .= $this->Display->createCard($item);
             }
             $html .="</div>";
         }
@@ -123,11 +126,23 @@ class HomeLogic
 
     public function getAllProducts()
     {
-        $sql = "SELECT * FROM products WHERE product_categorie = '{$_GET['select']}'";
+        $sql = "SELECT product_id as id, product_name, Replace(Replace(Concat('€ ', Format(`product_price`, 2)), ',', ''), '.', ',') AS `product_price`, product_categorie, product_title, product_name, product_thumbnail FROM products WHERE product_categorie = '{$_GET['select']}'";
+
+        if (isset($_GET['order']) && ($_GET['order'] == 'ASC' || $_GET['order'] == 'DESC'  )) {
+            $sql .= " ORDER BY product_price {$_GET['order']}";
+        }
+    
         //        die($sql);
         $items = $this->DataHandler->readsData($sql);
         $items = $items->fetchall(PDO::FETCH_ASSOC);
 
         return $items;
+    }
+
+    public function readProductsDetails($id){
+        $sql = "SELECT product_id as id, product_name, Replace(Replace(Concat('€ ', Format(`product_price`, 2)), ',', ''), '.', ',') AS `product_price`, product_categorie, product_title, product_name, product_thumbnail,product_description FROM products WHERE product_id = {$id}";
+        $product_information = $this->DataHandler->readsData($sql);
+        $product_information = $product_information->fetchAll(PDO::FETCH_ASSOC);
+        return $product_information;
     }
 }
