@@ -1,0 +1,20 @@
+#mySidenav a {
+    position: fixed;
+    right: -60px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#mySidenav a:hover {
+    right: 0;
+}
+
+#about {
+    top: 200px;
+    background-color: #777;
+}
