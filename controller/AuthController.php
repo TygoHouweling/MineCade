@@ -1,117 +1,74 @@
 <?php
 
-require_once 'model/AuthsLogic.php';
+require_once 'model/AuthLogic.php';
 require_once 'model/Display.php';
-require_once 'model/HomeLogic.php';
 
-class AuthController
-{
-    public function __construct(){
-        $this->AuthsLogic = new AuthsLogic();
+class AuthController {
+    public function __construct() {
+        $this->AuthLogic = new AuthLogic();
         $this->Display = new Display();
-        $this->HomeLogic = new HomeLogic();
     }
-    public function __destruct(){}
-    public function handleRequest(){
-        try {
-
-            isset($_GET['con']) === 'auth' ? $_GET['con'] : '';
+    public function __destruct() {}
+    public function handleRequest() {
+        try{
+            isset($_GET['con']) === 'auth' ? $_GET['con'] : $_GET['con'] = 'auth';
 
             $op = isset($_GET['op']) ? $_GET['op'] : '';
 
             switch ($op) {
-                case 'login':
-                    $this->collectLogin();
-                    break;
-
                 case 'registreer':
-                    $this->collectRegister();
+                    $this->collectCreateAuth();
                     break;
 
-                case 'settings':
-                    $this->collectReadUpdateCustomer();
-                    break;      
+                case 'login':
+                    $this->collectReadAuth();
+                    break;
 
                 case 'logout':
-                    $this->destroyLogin();
+                    $this->destoryLogin();
+                    break;
+                
+                case 'showlogin':
+                    $this->ReadLogin();
                     break;
 
                 default:
-                    $this->collectLogin();
+                    # code...
+                    $this->ReadLogin();
                     break;
             }
+
         } catch (Exception $e) {
             throw $e;
         }
     }
 
-
-    public function collectReadUpdateCustomer(){
-
-        $id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : null;
-        $firstname = isset($_REQUEST['firstname']) ? $_REQUEST['firstname'] : null;
-        $lastname = isset($_REQUEST['lastname']) ? $_REQUEST['lastname'] : null;
-        $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
-        $street = isset($_REQUEST['street']) ? $_REQUEST['street'] : null;
-        $housenumber = isset($_REQUEST['housenumber']) ? $_REQUEST['housenumber'] : null;
-        $location = isset($_REQUEST['location']) ? $_REQUEST['location'] : null;
-        $zipcode = isset($_REQUEST['zipcode']) ? $_REQUEST['zipcode'] : null;
-
-
-        if(isset($_POST['accountSubmit'])){
-
-        $check = $this->CustomersLogic->updateCustomer($id, $firstname, $lastname, $email, $street, $housenumber, $location, $zipcode);
-
-        }
-
-        $categories = $this->HomeLogic->getAllCategories(false,true);
-
-        $data = $this->AuthsLogic->readCustomer($id);
-
-        include 'view/accountSettings.php';
-    }
-
-
-    public function collectLogin(){
-
-
-        if (isset($_POST['loginUser'])){
-
-            $email = isset($_POST['email']) ? $_POST['email'] : null;
-            $password = isset($_POST['password']) ? $_POST['password'] : null;
-
-            $check = $this->AuthsLogic->checkEmail($email);
-            if ($check === 1) {
-
-            $login = $this->AuthsLogic->loginCheck($email, $password);
-            } else {
-             $login = $this->Display->flash("msg", "Uw heeft nog geen account");   
-            }
-        }
-
+    public function ReadLogin() 
+    {
         include 'view/auth/login.php';
     }
 
-    public function collectRegister(){
-
-        if (isset($_POST['createUser'])) {
-
-            $email = isset($_POST['createEmail']) ? $_POST['createEmail'] : null;
-            $password = isset($_POST['createPassword']) ? $_POST['createPassword'] : null;
-
-            $check = $this->AuthsLogic->checkEmail($email);
-
-            if ($check === 0) {
-                $register = $this->AuthsLogic->createCustomer($email, $password);
-            } else {
-                $register = $this->Display->flash("msg", "Deze mail bestaat al");
-            }
+    public function collectReadAuth() 
+    {
+        if(empty(trim($_POST["uname"]))){
+            $username_err = "Please enter username.";
+        } else{
+            $username = trim($_POST["uname"]);
         }
 
-        include 'view/auth/register.php';
+        if(empty(trim($_POST["psw"]))){
+            $password_err = "Please enter your password.";
+        } else{
+            $password = trim($_POST["psw"]);
+            //$encptpsw = md5($password);
+        }
+
+        $res = $this->AuthLogic->readAuth($username,$password);
+        include 'view/auth/read.php';
     }
 
-    public function destroyLogin(){
+    public function destoryLogin() 
+    {
         include 'view/auth/logout.php';
     }
 }
