@@ -3,9 +3,9 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require_once 'controller/HomeController.php';
+require_once 'controller/MainController.php';
 
-$controller = new HomeController();
+$controller = new MainController();
 $controller->handleRequest();
 
 ?>
