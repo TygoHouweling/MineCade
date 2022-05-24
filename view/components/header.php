@@ -10,4 +10,4 @@
 	<link rel="stylesheet" href="view/assets/style/main_style.css">
 	<title>Minecade</title>
 </head>
-<body>
+<body class="hero-anime">
