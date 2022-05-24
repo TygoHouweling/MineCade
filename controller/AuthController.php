@@ -67,6 +67,35 @@ class AuthController {
         include 'view/auth/read.php';
     }
 
+    public function collectCreateAuth() 
+    {
+        if(empty(trim($_POST["fname"]))){
+            $firstname_err = "Please enter your firstname.";
+        } else{
+            $firstname = trim($_POST["fname"]);
+        }
+
+        if(empty(trim($_POST["lname"]))){
+            $lastname_err = "Please enter your lasstname.";
+        } else{
+            $lastname = trim($_POST["lname"]);
+        }
+
+        if(empty(trim($_POST["uname"]))){
+            $username_err = "Please enter username.";
+        } else{
+            $username = trim($_POST["uname"]);
+        }
+
+        if(empty(trim($_POST["psw"]))){
+            $password_err = "Please enter your password.";
+        } else{
+            $password = trim($_POST["psw"]);
+            //$encptpsw = md5($password);
+        }
+        include 'view/auth/create.php';
+    }
+
     public function destoryLogin() 
     {
         include 'view/auth/logout.php';

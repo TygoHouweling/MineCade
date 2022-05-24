@@ -15,7 +15,7 @@ class AuthLogic
   public function readAuth($username,$password)
   {
     try {
-      $sql = "SELECT * FROM `user` WHERE `username` = '{$username}' AND `password` = '{$password}'";
+      $sql = "SELECT * FROM `users` WHERE `username` = '{$username}' AND `password` = '{$password}'";
       $res = $this->DataHandler->readData($sql);
 
       if ($res ->rowCount() > 0) {

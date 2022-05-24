@@ -7,11 +7,10 @@ require_once "model/Display.php";
 class HomeLogic
 {
 
-    public function __construct()
-    {
+    public function __construct(){
+        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl", "vMVZEZsH2F");
         $this->Display = new Display();
-        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "lennghcnl_webwolrld", "lennghcnl_admin", "admin2022");
-    }
+      }
 
     public function __destruct()
     {

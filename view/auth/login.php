@@ -27,43 +27,19 @@ if (!isset($_SESSION)) {
         </a>
         </div>
 
-        <form class="login100-form validate-form" method="post" action="index.php?con=auth&op=login">
-          <span class="login100-form-title">
-          <h5 class="text-black">Inloggen</h5>
-          </span>
+        <form class="login100-form validate-form" method="POST" action='index.php?con=auth&op=login'>
+          <br><br>
+        <div class="row">
+        <div class="col-6"><label for="uname"><b>Username</b></label></div>
+        <div class="col-6"><input type="text" placeholder="Enter Username" name="uname" style="width: 50%;" required><br></div>
 
-          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-              <input class="input100" type="email" name="email" placeholder="Email" require>
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </span>
-          </div>
+        <div class="w-100"></div>
+        <div class="col-6"> <label for="psw"><b>Password</b></label></div>
+        <div class="col-6"><input type="password" placeholder="Enter Password" name="psw" required><br></div>
+        </div>
 
-          <div class="wrap-input100 validate-input" data-validate="Password is required">
-              <input class="input100" type="password" name="password" placeholder="Password" require>
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-            </span>
-          </div>
-
-          <div class="container-login100-form-btn">
-              <input class="login100-form-btn" value="Login" type="submit" name="loginUser">
-          </div>
-
-            <div class="text-center pt-3">
-            <span class="txt1">Wachtwoord</span>
-            <a class="txt2" href="#">Vergeten?</a>
-          </div>
-
-          <div class="text-center ">
-            <a class="txt2" href="index.php?con=auth&op=registreer">Maak een account aan<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a><br/>
-            
-            <span class="txt1">Terug naar hoofdpagina?</span>
-            <a class="txt2" href="index.php">Klik hier</a>
-          </div>
-
+        <button type="submit">Login</button>
+        <button><a href='index.php?con=auth&op=registreer'>Registreer</a></button>
         </form>
       </div>
     </div>
