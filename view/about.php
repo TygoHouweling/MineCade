@@ -9,13 +9,10 @@ if (!isset($_SESSION)) {
   include "components/header.php";
   ?>
   <link rel="stylesheet" href="view/assets/Home.css">
-  <link rel="stylesheet" href="view/assets/navbar.css">
   <link rel="stylesheet" href="view/assets/footer.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-  <?php include "components/navbar.php";?>
 
 
   <section>

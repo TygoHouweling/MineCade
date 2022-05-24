@@ -12,7 +12,6 @@ class MainController {
     public function __destruct() {}
     public function handleRequest() {
         try{
-
             $controller = isset($_GET['con']) ? $_GET['con'] : '';
 
             switch ($controller) {
