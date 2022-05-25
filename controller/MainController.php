@@ -3,15 +3,20 @@ require_once 'controller/AuthController.php';
 require_once 'controller/HomeController.php';
 require_once 'controller/AdminController.php';
 
-class MainController {
-    public function __construct() {
+class MainController
+{
+    public function __construct()
+    {
         $this->AuthController = new AuthController();
         $this->HomeController = new HomeController();
         $this->AdminController = new AdminController();
     }
-    public function __destruct() {}
-    public function handleRequest() {
-        try{
+    public function __destruct()
+    {
+    }
+    public function handleRequest()
+    {
+        try {
             echo
             $controller = isset($_GET['con']) ? $_GET['con'] : '';
 
@@ -32,7 +37,6 @@ class MainController {
                     $this->HomeController->handleRequest();
                     break;
             }
-
         } catch (Exception $e) {
             throw $e;
         }
