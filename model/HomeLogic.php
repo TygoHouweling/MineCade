@@ -9,7 +9,7 @@ class HomeLogic
 
     public function __construct()
     {
-        $this->DataHandler = new Datahandler("127.0.0.1", "mysql", "minecade", "root", "root");
+        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl", "vMVZEZsH2F");
         $this->Display = new Display();
     }
 

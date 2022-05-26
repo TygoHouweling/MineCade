@@ -36,17 +36,16 @@
 							<div class="nav_links_div">
 								<a class="nav_link"href="?con=home">Home</a>
 								<a class="nav_link"href="?con=home?op=about">About us</a>
-
+								<a href='index.php?con=auth&op=login'>Login</a>
 							</div>
 						</nav>
 					</div>
-
 				</div>
 			</div>
 		</div>
 
 	<?php } elseif (isset($_SESSION['loggedin']) === true) { ?>
 		<div class='navbar'>
-			<a href='index.php?con=auth&op=logout'>Logout</a>
+		<a href='index.php?con=auth&op=logout'>Logout</a>
 		</div>
 	<?php } ?>

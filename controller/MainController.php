@@ -17,7 +17,6 @@ class MainController
     public function handleRequest()
     {
         try {
-            echo
             $controller = isset($_GET['con']) ? $_GET['con'] : '';
 
             switch ($controller) {
