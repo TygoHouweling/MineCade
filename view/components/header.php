@@ -37,6 +37,7 @@
 								<a class="nav_link"href="?con=home">Home</a>
 								<a class="nav_link"href="?con=home?op=about">About us</a>
 								<a href='index.php?con=auth&op=login'>Login</a>
+								<a href='index.php?con=admin&op=events'>Events toevoegen</a>
 							</div>
 						</nav>
 					</div>
