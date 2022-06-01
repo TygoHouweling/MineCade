@@ -8,14 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php //require 'components/header.php';?>
+    <?php require 'view/components/header.php';?>
 
     <h1>
         Create Form
     </h1>
     <form action="index.php?con=admin&op=events" method="POST" enctype="multipart/form-data">
     <div>
-        <label>Event name:</label>
+        <br><br><label>Event name:</label>
         <input type="text" name="event_name" placeholder="event_name" required>
     </div>
     <div>
@@ -45,7 +45,7 @@
 
     </div>
 </div>
-<?php //require 'components/footer.php';?>
+<?php require 'view/components/footer.php';?>
     
 </body>
 </html>
