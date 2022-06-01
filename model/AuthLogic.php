@@ -23,6 +23,11 @@ class AuthLogic
         $row = $res->fetch(PDO::FETCH_ASSOC);
         $_SESSION['currentuser'] = $row['username'];
         $_SESSION['loggedin'] = true;
+        $_SESSION['currentuser'] = $row['username'];
+
+        if ($row['user_admin'] == 1) {
+          $_SESSION['user_admin'] = $row['user_admin'];
+        } 
         return "<h3>U bent succesvol ingelogd</h3>";
 
       } else {

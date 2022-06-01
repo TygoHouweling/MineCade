@@ -3,7 +3,6 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-
   $pageTitle = 'Inloggen';
   include("view/components/header.php"); ?>
     <link rel="stylesheet" href="view/assets/Login.css">

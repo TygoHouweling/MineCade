@@ -1,3 +1,4 @@
+<?php var_dump($_SESSION); ?>
 <!doctype html>
 <html lang="en">
 
@@ -64,7 +65,9 @@
 							<div class="nav_links_div">
 								<a class="nav_link"href="?con=home">Home</a>
 								<a class="nav_link"href="?con=home?op=about">About us</a>
-								<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+								<?php if (isset($_SESSION['user_admin']) == 1) { ?>
+									<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+								<?php } ?>
 								<a href='index.php?con=auth&op=logout'>Logout</a>
 							</div>
 						</nav>
