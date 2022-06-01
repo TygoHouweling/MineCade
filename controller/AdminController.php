@@ -35,6 +35,11 @@ class AdminController {
             throw $e;
         }
     }
+    public function readAllEvents()
+    {
+        include 'view/admin/events/read.php';
+    }
+
 
     public function collectCreateEvents() {
         $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
@@ -56,7 +61,7 @@ class AdminController {
 
         $already_send=false;
 
-        include 'view/admin/events/createEvent.php';
+        include 'view/admin/events/create.php';
     }
 
 }
