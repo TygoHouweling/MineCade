@@ -24,7 +24,7 @@
 	<?php
 
 	if (isset($_SESSION['loggedin']) === false) { ?>
-		<div class="fixed-top navigation-wrap bg-light start-header start-style">
+		<div class="navigation-wrap bg-light start-header start-style">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">

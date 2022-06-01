@@ -37,3 +37,7 @@ body.dark .logo img {
     display: flex;
     justify-content: space-around;
 }
+
+.navigation-wrap {
+	position: sticky;
+}
