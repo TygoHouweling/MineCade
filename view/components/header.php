@@ -26,6 +26,11 @@
 
 	<?php
 
+	if(isset($_SESSION['msg'])){
+		echo '<div class="alert alert-primary" role="alert">'.$_SESSION['msg'].'</div>';
+		unset($_SESSION['msg']);
+	}
+
 	if (isset($_SESSION['loggedin']) === false) { ?>
 		<div class="navigation-wrap bg-light start-header start-style">
 			<div class="container">

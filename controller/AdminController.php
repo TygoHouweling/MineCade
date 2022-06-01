@@ -43,11 +43,20 @@ class AdminController {
         $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
         $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
 
-        if(isset($_POST['submit'])) {
-            $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+        $already_send = isset($already_send)?$already_send:false;
+        if($already_send==true){
+
+        } else {
+            if(isset($_POST['submit'])) {
+                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+                $_SESSION['msg']='Event is aangemaakt.';
+                $already_send = true;
+            }
         }
 
-        include 'view/admin/events/events.php';
+        $already_send=false;
+
+        include 'view/admin/events/createEvent.php';
     }
 
 }

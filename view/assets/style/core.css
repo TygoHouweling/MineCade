@@ -64,3 +64,14 @@ h1 span{
 	opacity: 1;
 	transform: translate(0);
 }
+
+.alert {
+	opacity: 1;
+    padding: 8px !important;
+    font-size: 20px;
+    animation: popup .5s 5s ease forwards;
+    position: fixed !important;
+    bottom: 0;
+    right: 50%;
+    z-index: 10;
+}
