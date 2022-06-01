@@ -34,7 +34,7 @@
 					<div class="col-md-12">
 						<nav class="navbar navbar-light bg-light">
 							<a class="logo_header" href="?con=home">
-								<img src="view/assets/images/logo.png" width="100%" height="100%" class="d-inline-block align-top" alt="">
+								<img src="view/assets/images/logo.png" width="100%" height="100%" alt="">
 							</a>
 
 							<div class="nav_links_div">
