@@ -52,7 +52,24 @@
 		</div>
 
 	<?php } elseif (isset($_SESSION['loggedin']) === true) { ?>
-		<div class='navbar'>
-			<a href='index.php?con=auth&op=logout'>Logout</a>
+		<div class="navigation-wrap bg-light start-header start-style">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav class="navbar navbar-light bg-light">
+							<a class="logo_header" href="?con=home">
+								<img src="view/assets/images/logo.png" width="100%" height="100%" class="d-inline-block align-top" alt="">
+							</a>
+
+							<div class="nav_links_div">
+								<a class="nav_link"href="?con=home">Home</a>
+								<a class="nav_link"href="?con=home?op=about">About us</a>
+								<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+								<a href='index.php?con=auth&op=logout'>Logout</a>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
 		</div>
 	<?php } ?>

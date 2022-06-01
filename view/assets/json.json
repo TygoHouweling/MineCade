@@ -8,12 +8,12 @@
         "url":"?con=home?op=about"
     },
     {
-        "name":"Login",
-        "url":"?con=auth&op=login"
-    },
-    {
         "name":"Events toevoegen",
         "url":"?con=admin&op=events"
+    },
+    {
+        "name":"Login",
+        "url":"?con=auth&op=showlogin"
     }
     
 ]
