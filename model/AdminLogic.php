@@ -6,7 +6,7 @@ require_once "model/DataHandler.php";
 class AdminLogic
 {
   public function __construct(){
-    $this->DataHandler = new Datahandler("localhost", "mysql", "minecade", "root", "");
+    $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_minecade", "stan2022");
   }
   public function __destruct(){}
   

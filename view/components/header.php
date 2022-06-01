@@ -16,6 +16,9 @@
 		session_start();
 	}
 
+	$result = file_get_contents('view/assets/json.json');
+	$details = json_decode($result);
+
 	?>
 </head>
 
@@ -34,10 +37,13 @@
 							</a>
 
 							<div class="nav_links_div">
-								<a class="nav_link"href="?con=home">Home</a>
-								<a class="nav_link"href="?con=home?op=about">About us</a>
-								<a href='index.php?con=auth&op=login'>Login</a>
-								<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+								<?php
+								foreach ($details as $key => $value) {
+								?>
+									<a class="nav_link" href="<?= $value->url ?>"><?= $value->name ?></a>
+								<?php
+								}
+								?>
 							</div>
 						</nav>
 					</div>
@@ -47,6 +53,6 @@
 
 	<?php } elseif (isset($_SESSION['loggedin']) === true) { ?>
 		<div class='navbar'>
-		<a href='index.php?con=auth&op=logout'>Logout</a>
+			<a href='index.php?con=auth&op=logout'>Logout</a>
 		</div>
 	<?php } ?>
