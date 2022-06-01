@@ -28,18 +28,27 @@ if (!isset($_SESSION)) {
         </div>
 
         <form class="login100-form validate-form" method="POST" action='index.php?con=auth&op=login'>
+
           <br><br>
-        <div class="row">
-        <div class="col-6"><label for="uname"><b>Username</b></label></div>
-        <div class="col-6"><input type="text" placeholder="Enter Username" name="uname" style="width: 50%;" required><br></div>
+          <div class="row">
+            <div class="col-5"></div>
+            <div class="col-1"><label for="uname"><b>Username</b></label></div>
+            <div class="col-3"><input type="text" placeholder="Enter Username" name="uname" style="width: 50%;" required><br></div>
+            <div class="col-3"></div>
 
-        <div class="w-100"></div>
-        <div class="col-6"> <label for="psw"><b>Password</b></label></div>
-        <div class="col-6"><input type="password" placeholder="Enter Password" name="psw" required><br></div>
-        </div>
+            <div class="col-5"></div>
+            <div class="col-1"> <label for="psw"><b>Password</b></label></div>
+            <div class="col-3"><input type="password" placeholder="Enter Password" name="psw" style="width: 50%;" required><br></div>
+            <div class="col-3"></div>
+          </div>
 
-        <button type="submit">Login</button>
-        <button><a href='index.php?con=auth&op=registreer'>Registreer</a></button>
+          <div class="row">
+            <div class="col-5"></div>
+            <div class="col-1"><button><a href='index.php?con=auth&op=registreer'>Registreer</a></button></div>
+            <div class="col-3"><button type="submit">Login</button></div>
+            <div class="col-3"></div>
+          </div>
+
         </form>
       </div>
     </div>
