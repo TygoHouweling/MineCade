@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,45 +8,82 @@
     <link rel="stylesheet" href="view/assets/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <?php require 'view/components/header.php';?>
+    <?php require 'view/components/header.php'; ?>
 
-    <h1>
-        Create Form
-    </h1>
-    <form action="index.php?con=admin&op=events" method="POST" enctype="multipart/form-data">
-    <div>
-        <br><br><label>Event name:</label>
-        <input type="text" name="event_name" placeholder="event_name" required>
-    </div>
-    <div>
-        <label>Event description:</label>
-        <input type="textarea" name="event_desc" placeholder="event_desc" required>
-    </div>
-    <div>
-        <label>Event date:</label>
-        <input type="datetime-local" name="event_date" placeholder="event_date" required>
-    </div>
-    <div>
-        <label>Event location:</label>
-        <input type="text" name="event_location" placeholder="event_location" required>
-    </div>
-    <div>
-        <label>Event zipcode:</label>
-        <input type="text" name="event_zipcode" placeholder="event_zipcode" required>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>
+                    Create Form
+                </h1>
+                <form action="?con=admin&op=events" method="POST" enctype="multipart/form-data">
 
+                    <table class="form_styling">
+                        <tr>
+                            <td>
+                                <label>Event name:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="event_name" placeholder="event_name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Event description:</label>
+                            </td>
+                            <td>
+                                <input type="textarea" name="event_desc" placeholder="event_desc" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
 
-    <div>
-        <input type="reset">
-        <input type="submit" name="submit" value="Submit">
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Event date:</label>
+                            </td>
+                            <td>
+                                <input type="datetime-local" name="event_date" placeholder="event_date" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Event location:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="event_location" placeholder="event_location" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Event zipcode:</label>
+
+                            </td>
+                            <td>
+                                <input type="text" name="event_zipcode" placeholder="event_zipcode" required>
+
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" name="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
     </div>
-  </form>
+    <?php require 'view/components/footer.php'; ?>
 
-
-    </div>
-</div>
-<?php require 'view/components/footer.php';?>
-    
 </body>
+
 </html>
