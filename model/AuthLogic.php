@@ -38,7 +38,7 @@ class AuthLogic
   public function createAuth($firstname, $lastname, $username, $password, $email)
   {
     try {
-      $sql = "INSERT INTO `user` (firstname, lastname, username, psw, email) "; 
+      $sql = "INSERT INTO `users` (firstname, lastname, username, password, email) "; 
       $sql .= "VALUES ('{$firstname}', '{$lastname}', '{$username}', '{$password}', '{$email}')";
       $res = $this->DataHandler->createData($sql);
 

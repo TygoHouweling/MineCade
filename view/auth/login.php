@@ -3,14 +3,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <?php
   $pageTitle = 'Inloggen';
   include("view/components/header.php"); ?>
     <link rel="stylesheet" href="view/assets/Login.css">
@@ -44,7 +37,7 @@ if (!isset($_SESSION)) {
 
           <div class="row">
             <div class="col-5"></div>
-            <div class="col-1"><button><a href='index.php?con=auth&op=registreer'>Registreer</a></button></div>
+            <div class="col-1"><button><a href='index.php?con=auth&op=showregister'>Registreer</a></button></div>
             <div class="col-3"><button type="submit">Login</button></div>
             <div class="col-3"></div>
           </div>
@@ -54,12 +47,4 @@ if (!isset($_SESSION)) {
     </div>
   </div>
 
-  <script>
-<?php if(isset($_SESSION['msg'])): ?>
-  toastr.info("<?= $this->Display->flash('msg') ?>");
-  <?php endif ?>
-</script>
-
-</body>
-
-</html>
+<?php   include("view/components/footer.php"); ?>
