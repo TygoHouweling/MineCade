@@ -74,6 +74,7 @@
 									<div class="dropdown">
 										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
 										<div id="myDropdown" class="dropdown-content">
+										<a href='index.php?con=admin'>Admin Overview</a>
 										<a href='index.php?con=auth&op=showeditregister'>Uw Account</a>
 										<a href='index.php?con=admin&op=events'>Events toevoegen</a>
 										<a href='index.php?con=auth&op=logout'>Logout</a>
