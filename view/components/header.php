@@ -66,9 +66,25 @@
 								<a class="nav_link"href="?con=home">Home</a>
 								<a class="nav_link"href="?con=home?op=about">About us</a>
 								<?php if (isset($_SESSION['user_admin']) == 1) { ?>
-									<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+									<div class="dropdown">
+										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
+										<div id="myDropdown" class="dropdown-content">
+										<a href='index.php?con=auth&op=showeditregister'>Uw Account</a>
+										<a href='index.php?con=admin&op=events'>Events toevoegen</a>
+										<a href='index.php?con=auth&op=logout'>Logout</a>
+										</div>
+									</div>
+
+								<?php } else { ?>
+									<div class="dropdown">
+										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
+										<div id="myDropdown" class="dropdown-content">
+											<a href='index.php?con=auth&op=logout'>Logout</a>
+										</div>
+									</div>
+
 								<?php } ?>
-								<a href='index.php?con=auth&op=logout'>Logout</a>
+
 							</div>
 						</nav>
 					</div>
@@ -76,3 +92,26 @@
 			</div>
 		</div>
 	<?php } ?>
+
+
+<script>
+  /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
