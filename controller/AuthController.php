@@ -76,7 +76,7 @@ class AuthController {
         }
 
         if(empty(trim($_POST["lname"]))){
-            $lastname_err = "Please enter your lasstname.";
+            $lastname_err = "Please enter your lastname.";
         } else{
             $lastname = trim($_POST["lname"]);
         }
@@ -93,7 +93,15 @@ class AuthController {
             $password = trim($_POST["psw"]);
             //$encptpsw = md5($password);
         }
-        include 'view/auth/create.php';
+
+        if(empty(trim($_POST["email"]))){
+            $email_err = "Please enter your email.";
+        } else{
+            $email = trim($_POST["email"]);
+        }
+
+        $res = $this->AuthLogic->createAuth($firstname, $lastname, $username, $password, $email);
+        include 'view/auth/read.php';
     }
 
     public function destoryLogin() 

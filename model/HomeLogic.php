@@ -7,9 +7,8 @@ require_once "model/Display.php";
 class HomeLogic
 {
 
-    public function __construct()
-    {
-        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl", "vMVZEZsH2F");
+    public function __construct(){
+        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_projecten", "stan2022");
         $this->Display = new Display();
     }
 

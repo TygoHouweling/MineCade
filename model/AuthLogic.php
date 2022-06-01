@@ -5,11 +5,12 @@ require_once "model/DataHandler.php";
 class AuthLogic
 {
   public function __construct(){
-    $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl", "vMVZEZsH2F");
+    $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_projecten", "stan2022");
     $this->Display = new Display();
   }
   public function __destruct()
   {
+
   }
 
   public function readAuth($username,$password)
@@ -34,5 +35,23 @@ class AuthLogic
       throw $e;
     }
   }
+  public function createAuth($firstname, $lastname, $username, $password, $email)
+  {
+    try {
+      $sql = "INSERT INTO `user` (firstname, lastname, username, psw, email) "; 
+      $sql .= "VALUES ('{$firstname}', '{$lastname}', '{$username}', '{$password}', '{$email}')";
+      $res = $this->DataHandler->createData($sql);
 
+      $_SESSION['currentuser'] = $username;
+      $_SESSION['loggedin'] = true;
+
+      return $res;
+
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
+  
 }
+
+
