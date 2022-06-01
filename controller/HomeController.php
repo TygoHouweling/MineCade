@@ -12,12 +12,9 @@ class HomeController {
 
             $op = isset($_GET['op']) ? $_GET['op'] : '';
 
-            switch ($op) {     
-
-                case 'home':
-                    $this->readHomeFile();
-                    break;
-            
+            switch ($op) {
+                case 'about':
+                    $this->readAboutFile();
                 default:
                     $this->readHomeFile();
                     break;
@@ -27,8 +24,11 @@ class HomeController {
             throw $e;
         }
     }
-    public function readHomeFile(){
-        include 'view/home.php';
-    }
+        public function readHomeFile(){
+            include 'view/home.php';
+        }
 
+        public function readAboutFile(){
+            include('view/about.php');
+        }
 }
