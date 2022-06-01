@@ -1,12 +1,13 @@
 .form_styling {
-
+    width: 100%;
 }
 
-.form_styling li {
-    list-style: none;
+.form_styling input[type=text],.form_styling input[type=date]{
+    display: block;
+    width: 100%;
 }
 
-.form_styling li input[type=text]{
+.form_styling input[type=submit]{
+    padding: 5px;
     
 }
-
