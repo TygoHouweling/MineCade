@@ -2,8 +2,7 @@
 require 'view/components/header.php';
 
 echo $events;
-var_dump($pages);
-echo $pages;
+echo $pagination;
 
 require 'view/components/footer.php';
 ?>

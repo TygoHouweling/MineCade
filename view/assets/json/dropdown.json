@@ -1,7 +1,7 @@
 [   
     {
         "name":"Admin Overview",
-        "url":"?con=admin"
+        "url":"?con=admin&op=read"
     },
     {
         "name":"Uw Account",
@@ -9,7 +9,7 @@
     },
     {
         "name":"Events toevoegen",
-        "url":"?con=admin&op=events"
+        "url":"?con=event&op=create"
     },
     {
         "name":"Logout",
