@@ -1,11 +1,11 @@
 <?php
-require_once 'model/AdminLogic.php';
+require_once 'model/EventLogic.php';
 require_once 'model/Display.php';
 
 
 class AdminController {
     public function __construct() {
-        $this->AdminLogic = new AdminLogic();
+        $this->EventLogic = new AdminLogic();
         $this->Display = new Display();
     }
     public function __destruct() {}
@@ -18,16 +18,16 @@ class AdminController {
 
             switch ($op) {     
 
-                case '':
-                    //$this->NameController->handleRequest();
+                case 'create':
+                    $this->CreateEvents();
                     break;
 
-                    case 'events':
-                        $this->collectCreateEvents();
+                case 'read':
+                    $this->CollectReadAllEvents();
                     break;
             
                 default:
-                    $this->readAllProducts();
+                    $this->CollectReadAllEvents();
                     break;
             }
 
@@ -35,8 +35,20 @@ class AdminController {
             throw $e;
         }
     }
-    public function readAllEvents()
+
+    public function CollectReadAllEvents()
     {
+        $page = isset($_GET['number']) ? (int)$_GET['number'] : 1;      
+        $perPage = 5;
+        $limit = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+        $res = $this->EventLogic->readAllEvents($limit,$perPage);
+
+        $pages = $res[0];
+        $nav = $this->Display->PageNavigation($pages,$page);
+        
+        $products = $this->Display->createTable($res[1], true);
+    
         include 'view/admin/events/read.php';
     }
 

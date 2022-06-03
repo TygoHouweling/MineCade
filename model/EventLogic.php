@@ -10,7 +10,7 @@ class AdminLogic
   }
   public function __destruct(){}
   
-  public function createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode){
+  public function collectReadAllEvents($event_name, $event_desc, $event_date, $event_location, $event_zipcode){
     try {
 
         $sql = "INSERT INTO `events`(`event_name`, `event_desc`, `event_date`, `event_location`, `event_zipcode`) VALUES ('{$event_name}', '{$event_desc}', '{$event_date}', '{$event_location}', '{$event_zipcode}')";
@@ -20,6 +20,26 @@ class AdminLogic
     } catch (Exception $e) {
     throw $e;
     }
+  }
+
+  public function readAllEvents($limit, $perPage)
+  {
+    try {
+      $sql = "SELECT FOUND_ROWS() as total FROM events";
+      $res1 = $this->DataHandler->countPages($sql, $perPage);
+
+      $sql = "SELECT event_id, event_name, event_date, event_desc, event_location, event_zipcode FROM events LIMIT $limit, $perPage";
+      $res2 = $this->DataHandler->readsData($sql);
+
+      $array = [$res1, $res2];
+      var_dump(implode($array));
+      return $array;
+
+
+    } catch (Exception $e) {
+      throw $e;
+      }
+
   }
 }
 
