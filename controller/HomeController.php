@@ -1,8 +1,11 @@
 <?php
+require_once 'model/Display.php';
+require_once 'model/HomeLogic.php';
 
 class HomeController {
     public function __construct() {
         $this->Display = new Display();
+        $this->HomeLogic = new HomeLogic();
     }
     public function __destruct() {}
     public function handleRequest() {
@@ -25,6 +28,10 @@ class HomeController {
         }
     }
         public function readHomeFile(){
+            //input sql command
+            $sql = "SELECT `event_id`,`event_name`,`event_date`,`event_image`,`event_desc` FROM `events` ORDER BY `event_date`";
+            $result = $this->HomeLogic->getearliestEvents($sql);
+            $result = $this->Display->limit_date(6,$result);
             include 'view/home.php';
         }
 

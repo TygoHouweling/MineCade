@@ -48,8 +48,7 @@ class DataHandler{
 		return $this->dbh->query($sql,PDO::FETCH_ASSOC);
 	}
 	public function readsData($sql){
-		// $this->query($sql);
-		//var_dump($sql);
+		$this->query($sql);
 		return $this->dbh->query($sql,PDO::FETCH_ASSOC);
 	}
 

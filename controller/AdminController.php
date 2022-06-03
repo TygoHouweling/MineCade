@@ -27,7 +27,7 @@ class AdminController {
                     break;
             
                 default:
-                    $this->readAllProducts();
+                    $this->readAllEvents();
                     break;
             }
 

@@ -28,7 +28,7 @@ class AdminLogic
   public function fileUpload()
   {
     $randomhash = md5(date('YmdFhms'));
-    $target_dir = "view/assets/images/";
+    $target_dir = "view/assets/images/uploaded_Images/";
     // die(var_dump($_FILES['image']));
     $imageFileType = strtolower(pathinfo($_FILES["image"]["name"],PATHINFO_EXTENSION));
     $image = $randomhash.".".$imageFileType;
@@ -46,14 +46,6 @@ class AdminLogic
         $_SESSION['error']=true;
         return $msg;
       }
-    }
-            
-    // Check file size
-    if ($_FILES["image"]["size"] > 500000) {
-      $msg = "Sorry, your file is too large.";
-      $uploadOk = 0;
-      $_SESSION['error']=true;
-      return $msg;
     }
     
     // Allow certain file formats

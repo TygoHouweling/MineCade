@@ -243,4 +243,25 @@ class Display
 
     return $details;
   }
+
+  public function limit_date($limit,$array){
+    $time_now = strtotime('now');
+    // die($time_now);
+    $counter = 0;
+    $result=[];
+    foreach($array as $key=>$value){
+      $time_event_unix = strtotime($value['event_date']);
+      // echo "<pre>";
+      // var_dump($time_event_unix > $time_now);
+      if($time_event_unix > $time_now){
+        $result[] = $value;
+
+        $counter++;
+        if($counter == $limit){
+          return $result;
+        }
+      }
+    }
+    return $result;
+  }
 }
