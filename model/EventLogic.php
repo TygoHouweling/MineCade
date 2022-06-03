@@ -22,8 +22,6 @@ class AdminLogic
     }
   }
 
-<<<<<<< Updated upstream
-=======
   public function readEvents($id)
   {
     try {
@@ -37,7 +35,6 @@ class AdminLogic
 
   }
 
->>>>>>> Stashed changes
   public function readAllEvents($limit, $perPage)
   {
     try {
