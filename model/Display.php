@@ -29,9 +29,15 @@ class Display
       }
       if ($actionMode) {
         $html .= "<td style='display: flex; justify-content: space-between;'>";
+<<<<<<< Updated upstream
         $html .= "<a href='?con=admin&op=update&id={$row['event_id']}'>Edit</i></a>";
         $html .= "<a href='?con=admin&op=delete&id={$row['event_id']}'>Delete</i></i></a>";
         $html .= "<a href='?con=admin&op=read&id={$row['event_id']}'>Read</a>";
+=======
+        $html .= "<a href='?con=admin&op=update&id={$row['id']}'>Edit </i></a>";
+        $html .= "<a href='?con=admin&op=deleterequest&id={$row['id']}'>Delete </i></a>";
+        $html .= "<a href='?con=admin&op=read&id={$row['id']}'>Read</i></a>";
+>>>>>>> Stashed changes
         $html .= "</td>";
       }
       $html .= "</tr>";
@@ -109,6 +115,7 @@ class Display
       $html .= "<div class='col-3'></div>";
     }
 
+<<<<<<< Updated upstream
     $html .= "</div>";
     $html .= "</div>";
 
@@ -138,16 +145,46 @@ class Display
   }
 
   public function CreateCardGenre($result)
+=======
+  public function CreateCard($result)
+>>>>>>> Stashed changes
   {
 
     $result = $result->fetch(PDO::FETCH_ASSOC);
 
     $html = '';
 
-    $html .= "<div class='card'>";
     $html .= "<div class='container'>";
+<<<<<<< Updated upstream
     $html .= "<h4><b>Genre Informatie</b></h4>";
     $html .= "<p>Genre: {$result['categorie_name']}</p>";
+=======
+    $html .= "<div class='row'>";
+    foreach($result as $key=> $value) {
+      $html .= "<div class=col-3>";
+      $html .= "</div>";
+
+      $html .= "<div class=col-3>";
+      $html .= $key;
+      $html .= "</div>";
+
+      $html .= "<div class=col-3>";
+      $html .= $value;
+      $html .= "</div>";
+
+      $html .= "<div class=col-3>";
+      $html .= "</div>";
+    }
+    $html .= "<div class=col-6>";
+    $html .= "</div>";
+
+    $html .= "<div class=col-3>";
+    $html .= "<button onclick='history.back()'>Go Back</button>";
+    $html .= "</div>";
+
+    $html .= "<div class=col-3>";
+    $html .= "</div>";
+>>>>>>> Stashed changes
 
     $html .= "</div>";
     $html .= "</div>";
@@ -173,9 +210,13 @@ class Display
       $prevArrow = 1;
     }
 
-
     $html .= "<ul class='pagination'>";
+<<<<<<< Updated upstream
     $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
+=======
+
+    $html .= '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
+>>>>>>> Stashed changes
     for ($x = 1; $x <= $pages; $x++) {
       if ($page == $x) {
 
@@ -185,8 +226,14 @@ class Display
         $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $x . '">' . $x . '</a></li>';
       }
     }
+<<<<<<< Updated upstream
     $html .=  '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+=======
+    $html .=  '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+ 
+>>>>>>> Stashed changes
     $html .= "</ul>";
+
     $html .= "</nav>";
 
     return $html;
