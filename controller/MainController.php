@@ -1,7 +1,7 @@
 <?php
 require_once 'controller/AuthController.php';
 require_once 'controller/HomeController.php';
-require_once 'controller/AdminController.php';
+require_once 'controller/EventController.php';
 require_once 'model/Display.php';
 
 class MainController

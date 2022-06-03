@@ -22,14 +22,6 @@ class AdminLogic
     }
   }
 
-  public function readEvents()
-  {
-    $sql = "SELECT * FROM events";
-    $html = $this->DataHandler->readData($sql);
-
-    return $html;
-  }
-
   public function readAllEvents($limit, $perPage)
   {
     try {
@@ -51,4 +43,5 @@ class AdminLogic
   }
 }
 
-  ?>
+  
+?>
