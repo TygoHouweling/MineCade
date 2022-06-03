@@ -19,6 +19,7 @@ require_once 'controller/MainController.php';
 		session_start();
 	}
 
+	//if there is a navigation, put it in a json file and call here
 	$mainController = new MainController();
 	$navbar = $mainController->collectReadJSON('view/assets/json/navbar.json');
 	$dropdown = $mainController->collectReadJSON('view/assets/json/dropdown.json');
@@ -109,7 +110,7 @@ require_once 'controller/MainController.php';
 
 	<script>
 		/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+		toggle between hiding and showing the dropdown content */
 		function myFunction() {
 			document.getElementById("myDropdown").classList.toggle("show");
 		}

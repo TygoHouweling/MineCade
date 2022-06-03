@@ -47,13 +47,15 @@ class AdminController {
         $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
         $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
         $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+        $event_zipcode = isset($_REQUEST['image']) ? $_REQUEST['image'] : NULL;
 
         $already_send = isset($already_send)?$already_send:false;
         if($already_send==true){
 
         } else {
             if(isset($_POST['submit'])) {
-                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+                $image = $this->AdminLogic->fileUpload();
+                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode,$image);
                 $_SESSION['msg']='Event is aangemaakt.';
                 $already_send = true;
             }
