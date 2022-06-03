@@ -17,7 +17,7 @@
 		session_start();
 	}
 
-	$result = file_get_contents('view/assets/json.json');
+	$result = file_get_contents('view/assets/navbar.json');
 	$details = json_decode($result);
 
 	?>
@@ -50,6 +50,7 @@
 								<?php
 								}
 								?>
+								<a class="nav_link" href="?con=auth&op=showlogin">Login</a>
 							</div>
 						</nav>
 					</div>

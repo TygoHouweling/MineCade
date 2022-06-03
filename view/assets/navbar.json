@@ -10,10 +10,5 @@
     {
         "name":"Events toevoegen",
         "url":"?con=admin&op=events"
-    },
-    {
-        "name":"Login",
-        "url":"?con=auth&op=showlogin"
     }
-    
 ]
