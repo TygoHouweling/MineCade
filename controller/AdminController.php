@@ -22,8 +22,12 @@ class AdminController {
                     //$this->NameController->handleRequest();
                     break;
 
-                    case 'events':
-                        $this->collectCreateEvents();
+                case 'read':
+                    $this->CollectReadEvent($_REQUEST['event_id']);
+                    break;
+
+                case 'update':
+                    $this->CollectUpdateEvents();
                     break;
             
                 default:
@@ -35,9 +39,31 @@ class AdminController {
             throw $e;
         }
     }
-    public function readAllEvents()
+
+    public function CollectReadEvent() 
     {
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+
+        $res = $this->EventLogic->readEvents($id);
+        $html = $this->Display->CreateCard($res);
+
         include 'view/admin/events/read.php';
+    }
+
+    public function CollectReadAllEvents()
+    {
+        $page = isset($_GET['number']) ? (int)$_GET['number'] : 1;      
+        $perPage = 5;
+        $limit = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+        $res = $this->EventLogic->readAllEvents($limit,$perPage);
+
+        $pages = $res[0];
+        $pagination = $this->Display->PageNavigation($pages,$page);
+        
+        $events = $this->Display->createTable($res[1], true);
+    
+        include 'view/admin/events.php';
     }
 
 
@@ -64,6 +90,29 @@ class AdminController {
         $already_send=false;
 
         include 'view/admin/events/create.php';
+    }
+
+    public function CollectUpdateEvents()
+    {
+        $id = isset($_REQUEST['event_id']) ? $_REQUEST['event_id'] :null;
+        $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
+        $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
+        $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
+        $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
+        $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+
+        if (isset($_POST['updateSubmit'])) {
+                
+            $res = $this->EventLogic->updateEvent($id, $event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+            $html = $this->EventLogic->readEvents($id);   
+            $html = $this->Display->CreateCard($html);
+        
+        }
+
+        $html = $this->EventLogic->readEvents($id);
+        $html = $html->fetch(PDO::FETCH_ASSOC);
+
+        include 'view/admin/events/update.php';
     }
 
 }

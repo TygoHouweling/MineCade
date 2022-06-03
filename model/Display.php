@@ -5,7 +5,7 @@ class Display
 
   public function CreateTable($result, $actionMode = false)
   {
-    //        die(var_dump($actionMode));
+    //var_dump($actionMode);
 
     $tableheader = false;
     $html = "";
@@ -29,9 +29,9 @@ class Display
       }
       if ($actionMode) {
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='index.php?con=admin&op={$_GET['op']}&page=update&id={$row['id']}'><i class='fa fa-edit'></i></a>";
-        $html .= "<a href='index.php?con=admin&op={$_GET['op']}&page=delete&id={$row['id']}'><i class='fa fa-trash'></i></a>";
-        $html .= "<a href='index.php?con=admin&op={$_GET['op']}&page=read&id={$row['id']}'><i class='fa fa-eye'></i></a>";
+        $html .= "<a href='?con=admin&op=update&id={$row['event_id']}'>Edit</i></a>";
+        $html .= "<a href='?con=admin&op=delete&id={$row['event_id']}'>Delete</i></i></a>";
+        $html .= "<a href='?con=admin&op=read&id={$row['event_id']}'>Read</a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
@@ -87,59 +87,27 @@ class Display
   }
 
 
-
-  public function CreateCard($item)
-  {
-    //    $result = $result->fetch(PDO::FETCH_ASSOC);
-    //
-    //    $html = '';
-    //
-    //    $html .= "<div class='card'>";
-    //    $html .= "<img src='view/assets/image/{$result['avatar']}' alt='Avatar' style='width:100%'>";
-    //    $html .= "<div class='container'>";
-    //    $html .= "<h4><b>{$result['name']}</b></h4>";
-    //    $html .= "<p>{$result['phone']}</p>";
-    //    $html .= "<p>{$result['email']}</p>";
-    //    $html .= "<p>{$result['location']}</p>";
-    //
-    //    $html .= "</div>";
-    //    $html .= "</div>";
-
-    $html = "<div class=col-md-3>";
-    $html .= "<div class='bestseller'>";
-    $html .= "<div class='content_img'>";
-    $link =  $item['id'];
-    $html .= "<a href='?op=details&id=$link'>";
-    $image = 'view/assets/image/' . $item['product_thumbnail'];
-    $image = ($item['product_thumbnail'] != '' ? $image : "https://via.placeholder.com/350x430");
-    $html .= "<img class='bestSellerImage' src='$image' alt=''></a>";
-    $html .= "<div><a href='?op=details&id= $link '>Lees meer over dit product</a></div></div>";
-    $product_name = $item['product_name'];
-    $html .= "<div class='product_title'><h4>$product_name</h4></div>";
-    $product_price = $item['product_price'];
-    $id = $item['id'];
-    $html .= "<div class='bottom_bestseller'><input type='hidden' name='product_id' value='$id' id='$id'><div class='price'><span>$product_price</span></div><div class='text-center d-md-inline'><button name='add' id='$id'class='rounded-circle border-0 roundbutton'><i class='fas fa-plus fa-010' aria-hidden='true'></i></button></div></div>";
-    $html .= "</div></div>";
-
-    return $html;
-  }
-
-  public function CreateCardProducts($result)
+  public function CreateCard($result)
   {
 
     $result = $result->fetch(PDO::FETCH_ASSOC);
-
     $html = '';
 
-    $html .= "<div class='card'>";
     $html .= "<div class='container'>";
-    $html .= "<h4><b>{$result['product_title']}</b></h4>";
-    $html .= "<p>Genre: {$result['product_categorie']}</p>";
-    $html .= "<p>Naam: {$result['product_name']}</p>";
-    $html .= "<p>Prijs: {$result['product_price']}</p>";
-    $html .= "<p>Details: {$result['product_details']}</p>";
-    $html .= "<p>Beschrijving: {$result['product_description']}</p>";
-    $html .= "<img src='view/assets/image/{$result['product_thumbnail']}' alt='Thumbnail' style='width:20%'>";
+    $html .= "<div class='row'>";
+    foreach ($result as $key=> $value) {
+      $html .= "<div class='col-3'></div>";
+
+      $html .= "<div class='col-3'>";
+      $html .= $key . ":";
+      $html .= "</div>";
+
+      $html .= "<div class='col-3'>";
+      $html .= $value;
+      $html .= "</div>";
+
+      $html .= "<div class='col-3'></div>";
+    }
 
     $html .= "</div>";
     $html .= "</div>";
