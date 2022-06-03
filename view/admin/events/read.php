@@ -1,7 +1,9 @@
 <?php
 require 'view/components/header.php';
 
-var_dump($res);
+echo $events;
+var_dump($pages);
+echo $pages;
 
 require 'view/components/footer.php';
 ?>

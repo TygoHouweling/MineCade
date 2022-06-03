@@ -47,7 +47,7 @@ class AdminController {
         $pages = $res[0];
         $nav = $this->Display->PageNavigation($pages,$page);
         
-        $products = $this->Display->createTable($res[1], true);
+        $events = $this->Display->createTable($res[1], true);
     
         include 'view/admin/events/read.php';
     }

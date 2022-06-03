@@ -11,7 +11,7 @@ class Display
     $html = "";
     $html .= "<table class='table table-striped'>";
 
-    while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+    foreach($result as $row){
       if ($tableheader == false) {
         $html .= "<tr>";
         foreach ($row as $key => $value) {
@@ -29,16 +29,17 @@ class Display
       }
       if ($actionMode) {
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='?con=admin&op={$_GET['op']}&page=update&id={$row['id']}'><i class='fa fa-edit'></i></a>";
-        $html .= "<a href='?con=admin&op={$_GET['op']}&page=delete&id={$row['id']}'><i class='fa fa-trash'></i></a>";
-        $html .= "<a href='?con=admin&op={$_GET['op']}&page=read&id={$row['id']}'><i class='fa fa-eye'></i></a>";
+        $html .= "<a href='?con=admin&op={$_GET['op']}&page=update&id={$row['event_id']}'><i class='fa fa-edit'></i></a>";
+        $html .= "<a href='?con=admin&op={$_GET['op']}&page=delete&id={$row['event_id']}'><i class='fa fa-trash'></i></a>";
+        $html .= "<a href='?con=admin&op={$_GET['op']}&page=read&id={$row['event_id']}'><i class='fa fa-eye'></i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
     }
     $html .= "</table>";
     return $html;
-  }
+    }
+
 
   public function CreateCard($item)
   {

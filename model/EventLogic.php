@@ -31,8 +31,8 @@ class AdminLogic
       $sql = "SELECT event_id, event_name, event_date, event_desc, event_location, event_zipcode FROM events LIMIT $limit, $perPage";
       $res2 = $this->DataHandler->readsData($sql);
 
+      $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
       $array = [$res1, $res2];
-      var_dump(implode($array));
       return $array;
 
 
