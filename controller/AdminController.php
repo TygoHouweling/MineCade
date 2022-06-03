@@ -44,6 +44,7 @@ class AdminController {
     public function collectCreateEvents() {
         $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
         $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
+        $event_shortdesc = isset($_REQUEST['event_shortdesc']) ? $_REQUEST['event_shortdesc'] : NULL;
         $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
         $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
         $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
@@ -55,7 +56,7 @@ class AdminController {
         } else {
             if(isset($_POST['submit'])) {
                 $image = $this->AdminLogic->fileUpload();
-                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode,$image);
+                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_shortdesc, $event_date, $event_location, $event_zipcode,$image);
                 $_SESSION['msg']='Event is aangemaakt.';
                 $already_send = true;
             }

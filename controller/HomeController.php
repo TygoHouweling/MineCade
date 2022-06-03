@@ -29,7 +29,7 @@ class HomeController {
     }
         public function readHomeFile(){
             //input sql command
-            $sql = "SELECT `event_id`,`event_name`,`event_date`,`event_image`,`event_desc` FROM `events` ORDER BY `event_date`";
+            $sql = "SELECT `event_id`,`event_name`,`event_date`,`event_image`,`event_desc`, `event_shortdesc` FROM `events` ORDER BY `event_date`";
             $result = $this->HomeLogic->getearliestEvents($sql);
             $result = $this->Display->limit_date(6,$result);
             include 'view/home.php';

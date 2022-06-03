@@ -58,7 +58,7 @@
 							<div class="card-body">
 								<div class="text-center mt-1">
 									<h4 class="card-title"><?= $result['event_name'] ?></h4>
-									<h6 class="text-primary mb-1 pb-3"><?= $result['event_desc'] ?></h6>
+									<h6 class="text-primary mb-1 pb-3"><?= $result['event_shortdesc'] ?></h6>
 								</div>
 								<div class="d-flex flex-row link_button">
 									<a href="?cat=events&op=read&id=<?= $result['event_id'] ?>">Read more about this event</a>

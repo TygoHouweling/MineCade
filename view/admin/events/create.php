@@ -64,6 +64,28 @@
                         </tr>
                         <tr>
                             <td>
+                                <label>Event short description:</label><br>
+
+                            </td>
+                        <tr>
+                            <td>
+                                <!-- <input type="text" name="event_desc" placeholder="event_desc" required> -->
+                                <textarea class="tinymce" id="mceDEMO" name="event_shortdesc"></textarea>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/tinymce.min.js" integrity="sha512-XQOOk3AOZDpVgRcau6q9Nx/1eL0ATVVQ+3FQMn3uhMqfIwphM9rY6twWuCo7M69rZPdowOwuYXXT+uOU91ktLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                                <script>
+                                    tinymce.init({
+                                        selector: "#mceDEMO",
+                                        plugins: "save",
+                                        menubar: false,
+                                        toolbar: "save | styleselect | bold italic | alignleft aligncenter alignright alignjustify"
+                                    });
+                                </script>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
                                 <label>Event description:</label><br>
 
                             </td>

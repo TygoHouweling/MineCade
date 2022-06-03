@@ -13,11 +13,11 @@ class AdminLogic
   {
   }
 
-  public function createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode,$event_image)
+  public function createEvent($event_name, $event_desc,$event_shortdesc, $event_date, $event_location, $event_zipcode,$event_image)
   {
     try {
 
-      $sql = "INSERT INTO `events`(`event_name`, `event_desc`, `event_date`, `event_location`, `event_zipcode`,`event_image`) VALUES ('{$event_name}', '{$event_desc}', '{$event_date}', '{$event_location}', '{$event_zipcode}','{$event_image}')";
+      $sql = "INSERT INTO `events`(`event_name`, `event_desc`,`event_shortdesc`, `event_date`, `event_location`, `event_zipcode`,`event_image`) VALUES ('{$event_name}', '{$event_desc}','{$event_shortdesc}', '{$event_date}', '{$event_location}', '{$event_zipcode}','{$event_image}')";
       $html = $this->DataHandler->createData($sql);
       return $html;
     } catch (Exception $e) {
