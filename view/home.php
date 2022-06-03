@@ -41,12 +41,16 @@
 	</script>
 
 	<section style="background-color: #eee;">
+
+	<h1>
+		Our upcoming events!
+	</h1>
 		<div class="container py-5">
 			<div class="row">
 				<?php
 				foreach ($result as $key => $result) {
 				?>
-					<div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+					<div class="col-lg-4 mb-4 col-md-6">
 						<div class="card text-black">
 							<div class="imgbox">
 								<img width="100%" height="100%" src="view/assets/images/uploaded_images/<?= $result['event_image'] ?>" class="card-img-top" alt="blog" />

@@ -12,6 +12,10 @@ require_once 'controller/MainController.php';
 	<link rel="icon" type="image/png" href="/view/assets/images/logo.png" sizes="32x32">
 	<link rel="stylesheet" href="view/assets/style/main_style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 	<title>Minecade</title>
 	<?php
 
@@ -73,8 +77,13 @@ require_once 'controller/MainController.php';
 							</a>
 
 							<div class="nav_links_div">
-								<a class="nav_link" href="?con=home">Home</a>
-								<a class="nav_link" href="?con=home?op=about">About us</a>
+								<?php
+								foreach ($navbar as $key => $value) {
+								?>
+									<a class="nav_link" href="<?= $value->url ?>"><?= $value->name ?></a>
+								<?php
+								}
+								?>
 								<?php if (isset($_SESSION['user_admin']) == 1) { ?>
 									<div class="dropdown">
 										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
