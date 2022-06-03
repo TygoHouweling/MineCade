@@ -1,0 +1,18 @@
+[   
+    {
+        "name":"Admin Overview",
+        "url":"?con=admin"
+    },
+    {
+        "name":"Uw Account",
+        "url":"?con=auth&op=showeditregister"
+    },
+    {
+        "name":"Events toevoegen",
+        "url":"?con=admin&op=events"
+    },
+    {
+        "name":"Logout",
+        "url":"?con=auth&op=logout"
+    }
+]

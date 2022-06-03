@@ -2,6 +2,7 @@
 require_once 'controller/AuthController.php';
 require_once 'controller/HomeController.php';
 require_once 'controller/AdminController.php';
+require_once 'model/Display.php';
 
 class MainController
 {
@@ -10,6 +11,7 @@ class MainController
         $this->AuthController = new AuthController();
         $this->HomeController = new HomeController();
         $this->AdminController = new AdminController();
+        $this->Display = new Display();
     }
     public function __destruct()
     {
@@ -39,5 +41,9 @@ class MainController
         } catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function collectReadJSON($file){
+        return $this->Display->readJSON($file);
     }
 }
