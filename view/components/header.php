@@ -86,7 +86,7 @@ require_once 'controller/MainController.php';
 								?>
 								<?php if (isset($_SESSION['user_admin']) == 1) { ?>
 									<div class="dropdown">
-										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
+										<button onclick="dropdownClick()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
 										<div id="myDropdown" class="dropdown-content">
 											<?php
 											foreach ($dropdown as $key => $value) {
@@ -100,7 +100,7 @@ require_once 'controller/MainController.php';
 
 								<?php } else { ?>
 									<div class="dropdown">
-										<button onclick="myFunction()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
+										<button onclick="dropdownClick()" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></button>
 										<div id="myDropdown" class="dropdown-content">
 											<a href='index.php?con=auth&op=logout'>Logout</a>
 										</div>
@@ -115,26 +115,3 @@ require_once 'controller/MainController.php';
 			</div>
 		</div>
 	<?php } ?>
-
-
-	<script>
-		/* When the user clicks on the button,
-		toggle between hiding and showing the dropdown content */
-		function myFunction() {
-			document.getElementById("myDropdown").classList.toggle("show");
-		}
-
-		// Close the dropdown menu if the user clicks outside of it
-		window.onclick = function(event) {
-			if (!event.target.matches('.dropbtn')) {
-				var dropdowns = document.getElementsByClassName("dropdown-content");
-				var i;
-				for (i = 0; i < dropdowns.length; i++) {
-					var openDropdown = dropdowns[i];
-					if (openDropdown.classList.contains('show')) {
-						openDropdown.classList.remove('show');
-					}
-				}
-			}
-		}
-	</script>
