@@ -23,6 +23,7 @@ body.dark .logo img {
 }
 
 .nav_link {
+	margin: auto 0;
 	color:black;
 	font-weight: 400;
 }

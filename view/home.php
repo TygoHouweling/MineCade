@@ -2,7 +2,6 @@
 	<?php
 
 	require_once('components/header.php');
-
 	?>
 
 	</div>
@@ -42,100 +41,34 @@
 	</script>
 
 	<section style="background-color: #eee;">
+
+	<h1>
+		Our upcoming events!
+	</h1>
 		<div class="container py-5">
 			<div class="row">
-				<div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-					<div class="card text-black">
-						<img src="view/assets/images/blog.jpg" class="card-img-top" alt="blog" />
-						<div class="card-body">
-							<div class="text-center mt-1">
-								<h4 class="card-title">Name blog</h4>
-								<h6 class="text-primary mb-1 pb-3">Desc</h6>
+				<?php
+				foreach ($result as $key => $result) {
+				?>
+					<div class="col-lg-4 mb-4 col-md-6">
+						<div class="card text-black">
+							<div class="imgbox">
+								<img width="100%" height="100%" src="view/assets/images/uploaded_images/<?= $result['event_image'] ?>" class="card-img-top" alt="blog" />
 							</div>
-
-							<div class="text-center">
-								<div class="p-3 mx-n3 mb-4" style="background-color: #eff1f2;">
-									<h5 class="mb-0">Quick Look</h5>
+							<div class="card-body">
+								<div class="text-center mt-1">
+									<h4 class="card-title"><?= $result['event_name'] ?></h4>
+									<h6 class="text-primary mb-1 pb-3"><?= $result['event_shortdesc'] ?></h6>
 								</div>
-
-
-								<div class="d-flex flex-column mb-4">
-									<span class="h1 mb-0">2x</span>
-									<span>Optical zoom range</span>
+								<div class="d-flex flex-row link_button">
+									<a href="?cat=events&op=read&id=<?= $result['event_id'] ?>">Read more about this event</a>
 								</div>
-
-
-							</div>
-
-							<div class="d-flex flex-row">
-								<button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-									Learn more
-								</button>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-					<div class="card text-black">
-						<img src="view/assets/images/blog.jpg" class="card-img-top" alt="blog" />
-						<div class="card-body">
-							<div class="text-center mt-1">
-								<h4 class="card-title">Name blog</h4>
-								<h6 class="text-primary mb-1 pb-3">Desc</h6>
-							</div>
-
-							<div class="text-center">
-								<div class="p-3 mx-n3 mb-4" style="background-color: #eff1f2;">
-									<h5 class="mb-0">Quick Look</h5>
-								</div>
-
-
-								<div class="d-flex flex-column mb-4">
-									<span class="h1 mb-0">2x</span>
-									<span>Optical zoom range</span>
-								</div>
-
-							</div>
-
-							<div class="d-flex flex-row">
-								<button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-									Learn more
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-					<div class="card text-black">
-						<img src="view/assets/images/blog.jpg" class="card-img-top" alt="blog" />
-						<div class="card-body">
-							<div class="text-center mt-1">
-								<h4 class="card-title">Name blog</h4>
-								<h6 class="text-primary mb-1 pb-3">Desc</h6>
-							</div>
-
-							<div class="text-center">
-								<div class="p-3 mx-n3 mb-4" style="background-color: #eff1f2;">
-									<h5 class="mb-0">Quick Look</h5>
-								</div>
-
-
-
-								<div class="d-flex flex-column mb-4">
-									<span class="h1 mb-0">4x</span>
-									<span>Optical zoom range</span>
-								</div>
-
-							</div>
-
-							<div class="d-flex flex-row">
-								<button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-									Learn more
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php
+				}
+				?>
 			</div>
 		</div>
 	</section>
