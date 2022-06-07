@@ -1,0 +1,14 @@
+[
+    {
+        "name":"Home",
+        "url":"?con=home"
+    },
+    {
+        "name":"About us",
+        "url":"?con=home?op=about"
+    },
+    {
+        "name":"Events toevoegen",
+        "url":"?con=admin&op=events"
+    }
+]

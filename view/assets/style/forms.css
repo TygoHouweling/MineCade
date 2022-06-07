@@ -1,0 +1,16 @@
+.form_styling {
+    width: 100%;
+}
+
+.form_styling input[type=text],.form_styling input[type=date]{
+    display: block;
+    width: 100%;
+}
+
+.form_styling input[type=submit]{
+    padding: 5px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}

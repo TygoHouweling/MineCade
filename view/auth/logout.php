@@ -9,7 +9,7 @@ if(isset($_SESSION)){
 }
 
 session_start();
-$_SESSION['danger'] = "U bent uitgelogd.";
+$msg =  "U bent uitgelogd.";
 
 header("Location: index.php");
 ?>

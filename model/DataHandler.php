@@ -23,7 +23,8 @@ class DataHandler{
 		}
 	}
 
-	public function __destruct(){
+	public function __destruct()
+	{
 		$this->dbh = null;
 	}
 
@@ -32,38 +33,30 @@ class DataHandler{
 		return $this->lastInsertId();
 	}
 
+
 	public function countPages($sql,$item_per_page){
 		$this->query($sql);
 		$get_total_rows = $this->sth->rowCount();
+		
 		//breaking total records into pages
 		return ceil($get_total_rows/$item_per_page);
+		// return $pages;
 	}
 
-	public function preparedQuery($query, $statements = [])
-    {
-        $this->sth = $this->dbh->prepare($query);
-        $this->sth->execute($statements);
-
-        return $this->sth->fetchAll();
-    }
-
-	public function existEmail($sql){
-		return $this->query($sql);
-	}
-	
 	public function readData($sql){
 		// return $this->query($sql);
 		return $this->dbh->query($sql,PDO::FETCH_ASSOC);
 	}
 	public function readsData($sql){
-		// $this->query($sql);z
+		$this->query($sql);
 		return $this->dbh->query($sql,PDO::FETCH_ASSOC);
 	}
-	public function updateData($sql){
-		$this->query($sql);
-		return $this->sth->rowCount();
+
+	public function readsDataPrice($sql){
+
 	}
-	public function checkEmail($sql){
+
+	public function updateData($sql){
 		$this->query($sql);
 		return $this->sth->rowCount();
 	}

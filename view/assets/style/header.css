@@ -16,3 +16,29 @@
 body.dark .logo img {
   filter: brightness(100%);
 }
+
+.logo_header {
+	width: 6rem;
+	height: 3rem;
+}
+
+.nav_link {
+	margin: auto 0;
+	color:black;
+	font-weight: 400;
+}
+.nav_link:hover {
+	text-decoration: none;
+	color: purple;
+	border-bottom: solid 1px purple;
+}
+
+.nav_links_div {
+	width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation-wrap {
+	position: sticky;
+}
