@@ -1,11 +1,11 @@
 <?php
-require_once 'model/AdminLogic.php';
+require_once 'model/EventLogic.php';
 require_once 'model/Display.php';
 
 
-class AdminController {
+class EventsController {
     public function __construct() {
-        $this->AdminLogic = new AdminLogic();
+        $this->EventsLogic = new EventsLogic();
         $this->Display = new Display();
     }
     public function __destruct() {}
@@ -37,7 +37,11 @@ class AdminController {
                 case 'read':
                     $this->collectReadEvent();
                     break;
-            
+
+                case 'test':
+                    $this->CollectReadAllEvents();
+                    break;
+
                 default:
                     $this->CollectReadAllEvents();
                     break;
@@ -64,12 +68,12 @@ class AdminController {
         $perPage = 5;
         $limit = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
-        $res = $this->EventLogic->readAllEvents($limit,$perPage);
+        $res = $this->EventsLogic->readAllEvents($limit,$perPage);
 
         $pages = $res[0];
         $pagination = $this->Display->PageNavigation($pages,$page);
         $events = $this->Display->createTable($res[1], true);
-    
+        $events = $events->fetchAll(PDO::FETCH_ASSOC);
         include 'view/admin/events.php';
     }
 
@@ -87,8 +91,9 @@ class AdminController {
         if($already_send==true){
 
         } else {
-            if(isset($_REQUEST['submit'])) {
-                $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+            if(isset($_POST['submit'])) {
+                $image = $this->EventsLogic->fileUpload();
+                $html = $this->EventsLogic->createEvent($event_name, $event_desc, $event_shortdesc, $event_date, $event_location, $event_zipcode,$image);
                 $_SESSION['msg']='Event is aangemaakt.';
                 $already_send = true;
             }
@@ -116,7 +121,7 @@ class AdminController {
         }
 
         $html = $this->EventLogic->readEvents($id);
-        $html = $html->fetch(PDO::FETCH_ASSOC);
+
 
         include 'view/admin/events/update.php';
     }

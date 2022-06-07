@@ -3,7 +3,7 @@
 require_once "model/DataHandler.php";
 
 
-class AdminLogic
+class EventsLogic
 {
   public function __construct(){
     $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_minecade", "stan2022");
@@ -15,6 +15,7 @@ class AdminLogic
 
         $sql = "INSERT INTO `events`(`event_name`, `event_desc`, `event_date`, `event_location`, `event_zipcode`) VALUES ('{$event_name}', '{$event_desc}', '{$event_date}', '{$event_location}', '{$event_zipcode}')";
         $html = $this->DataHandler->createData($sql);
+        $html = $html->FetchAll(PDO::FETCH_ASSOC);
         return $html; 
 
     } catch (Exception $e) {
