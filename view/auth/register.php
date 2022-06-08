@@ -29,12 +29,12 @@ require 'view/components/header.php'; ?>
         <div class="name-content">
           <p>Register here to join the best blogs makers.</p>
         </div>
-          <form action="" method="POST">
-            <input class="form-control" type="text" placeholder="Firstname"/>
-            <input class="form-control" type="text" placeholder="Lastname"/>
-            <input class="form-control" type="text" placeholder="Username"  />
-            <input class="form-control" type="text" placeholder="Email"  />
-            <input class="form-control"type="password" placeholder="Password" >
+          <form action="index.php?con=auth&op=registreer" method="POST">
+            <input class="form-control" type="text" name="uname" placeholder="Firstname"/>
+            <input class="form-control" type="text"  name="fname" placeholder="Lastname"/>
+            <input class="form-control" type="text" name="lname" placeholder="Username"  />
+            <input class="form-control" type="text" name="email" placeholder="Email"  />
+            <input class="form-control" type="password" placeholder="Password" name="password">
             <button onclick='target1()' class="btn btn-success">Create New Account</button>
             <span class="text-center font-weight-bold">or</span>
             <hr>          
