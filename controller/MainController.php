@@ -10,7 +10,7 @@ class MainController
     {
         $this->AuthController = new AuthController();
         $this->HomeController = new HomeController();
-        $this->EventController = new AdminController();
+        $this->EventController = new EventController();
         $this->Display = new Display();
     }
     public function __destruct()
