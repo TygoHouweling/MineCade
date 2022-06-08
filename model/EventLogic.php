@@ -30,6 +30,7 @@ class EventsLogic
       $res = $this->DataHandler->readData($sql);
   
       return $res;
+      var_dump($res);
     } catch (Exception $e){
       throw $e;
     }

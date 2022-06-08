@@ -56,8 +56,10 @@ class EventsController {
 
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
-        $res = $this->EventLogic->readEvents($id);
+        $res = $this->EventsLogic->readEvents($id);
+        var_dump($res);
         $html = $this->Display->CreateCard($res);
+        var_dump($html);
     
         include 'view/admin/events/read.php';
     }
@@ -71,9 +73,9 @@ class EventsController {
         $res = $this->EventsLogic->readAllEvents($limit,$perPage);
 
         $pages = $res[0];
+        //var_dump($res[1]);
         $pagination = $this->Display->PageNavigation($pages,$page);
         $events = $this->Display->createTable($res[1], true);
-        $events = $events->fetchAll(PDO::FETCH_ASSOC);
         include 'view/admin/events.php';
     }
 
@@ -120,7 +122,7 @@ class EventsController {
             $html = $this->Display->CreateCard($html);
         }
 
-        $html = $this->EventLogic->readEvents($id);
+        $html = $this->EventsLogic->readEvents($id);
 
 
         include 'view/admin/events/update.php';
@@ -136,7 +138,7 @@ class EventsController {
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] :null;
     
 
-        $html = $this->EventLogic->deleteEvent($id);
+        $html = $this->EventsLogic->deleteEvent($id);
         //$html = $html->fetch(PDO::FETCH_ASSOC);
 
         include 'view/admin/events/deleteconfirm.php';

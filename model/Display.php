@@ -11,7 +11,8 @@ class Display
     $html = "";
     $html .= "<table class='table table-striped'>";
 
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    //while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+      foreach($result as $row) {
       if ($tableheader == false) {
         $html .= "<tr>";
         foreach ($row as $key => $value) {

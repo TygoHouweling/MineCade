@@ -20,7 +20,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="event_name" required>
+                            <?php $event_name; ?>
+                            <input type="text" name="event_name" value="<?= $event_name ?>" required>
                         </td>
                     </tr>
                     <tr>
