@@ -53,9 +53,9 @@ if (!isset($_SESSION)) {
         <div class="name-content">
           <p>Login here to experience the best blogs.</p>
         </div>
-          <form action="" method="POST">
-            <input class="form-control" type="text" placeholder="Email"  />
-            <input class="form-control"type="password" placeholder="Password" >
+          <form action="index.php?con=auth&op=login" method="POST">
+            <input class="form-control" name="uname" type="text" placeholder="Email"  />
+            <input class="form-control" name="psw" type="password" placeholder="Password" >
             <button onclick="window.open('index.php?con=auth&op=showregister','_self')" class="login">Log In</button>
             <a href="#">Forgot Password ?</a>
             <hr>          <button onclick='target1()' class="btn btn-success">Create New Account</button>
