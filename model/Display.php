@@ -40,53 +40,6 @@ class Display
     return $html;
   }
 
-
-
-
-  public function shopcart($result, $product)
-  {
-
-    $total = 0;
-    $pay = false;
-    $html = "";
-
-
-    // $product = $product->fetch(PDO::FETCH_ASSOC);
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-    $image = 'view/assets/image/' . $result['product_thumbnail'];
-    $image = ($result['product_thumbnail'] != '' ? $image : "https://via.placeholder.com/350x430");
-
-    $quantity = $product * $result['product_price'];
-    $price = str_replace('.', ',', $quantity);
-
-    $html .= "<tr>
-                  <td>
-                      <div class='product-item'>
-                          <a class='product-thumb' href='#'><img src='{$image}' alt='Product'></a>
-                          <div class='product-info'>
-                              <h4 class='product-title'><a href='#'>{$result['product_name']}</a></h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td class='text-center'>
-                      <div class='count-input'>
-                          <p>{$product}</p>
-                      </div>
-                  </td>
-                  <td></td>
-                  <td class='text-center text-lg text-medium'>€ {$price}</td>
-                  <td class='text-center'><a class='remove-from-cart remove' id='{$result['product_id']}' href='#' data-original-title='Remove item'><i class='fa fa-trash'></i></a></td>
-              </tr>
-              ";
-    unset($_SESSION['total_price']);
-    $total = 0;
-    $_SESSION['total_price'] = $total + $quantity;
-
-
-    return $html;
-  }
-
-
   public function CreateCard($result)
   {
 
@@ -108,46 +61,6 @@ class Display
 
       $html .= "<div class='col-3'></div>";
     }
-
-    $html .= "</div>";
-    $html .= "</div>";
-
-    return $html;
-  }
-
-  public function CreateCardCustomer($result)
-  {
-    // echo "<pre>";
-    // var_dump($result);
-    // echo "</pre>";
-
-    $html = '';
-
-    $html .= "<div class='card'>";
-    $html .= "<div class='container'>";
-    $html .= "<p>Voornaam: {$result['customer_firstname']}</p>";
-    $html .= "<p>Achternaam: {$result['customer_lastname']}</p>";
-    $html .= "<p>Straat: {$result['customer_street']}</p>";
-    $html .= "<p>Huisnummer: {$result['customer_housenumber']}</p>";
-    $html .= "<p>Email: {$result['customer_email']}</p>";
-
-    $html .= "</div>";
-    $html .= "</div>";
-
-    return $html;
-  }
-
-  public function CreateCardGenre($result)
-  {
-
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-
-    $html = '';
-
-    $html .= "<div class='card'>";
-    $html .= "<div class='container'>";
-    $html .= "<h4><b>Genre Informatie</b></h4>";
-    $html .= "<p>Genre: {$result['categorie_name']}</p>";
 
     $html .= "</div>";
     $html .= "</div>";
