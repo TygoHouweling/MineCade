@@ -9,7 +9,8 @@ class HomeLogic
 
     public function __construct()
     {
-        $this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_minecade", "stan2022");
+        //$this->DataHandler = new Datahandler("web0088.zxcs.nl", "mysql", "sderijknl_minecade", "sderijknl_minecade", "stan2022");
+        $this->DataHandler =  new Datahandler("localhost", "mysql", "minecade", "root", "");
         $this->Display = new Display();
     }
 
@@ -37,5 +38,16 @@ class HomeLogic
         $result = $get_sql_back->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+
+    public function readCalendar($eventName, $eventDate, $eventLocation){
+        try {
+        $sql = "SELECT event_name, event_date, event_location FROM events";
+        $results = $this->DataHandler->readData($sql);
+        return $results;
+    } catch (Exception $e) {
+        throw $e;
+
+    }
     }
 }
