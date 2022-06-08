@@ -8,7 +8,7 @@
         "url":"?con=home?op=about"
     },
     {
-        "name":"Events toevoegen",
-        "url":"?con=admin&op=events"
+        "name":"Calendar",
+        "url":"?con=home&op=calendar"
     }
 ]

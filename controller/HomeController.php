@@ -18,6 +18,10 @@ class HomeController {
             switch ($op) {
                 case 'about':
                     $this->readAboutFile();
+                    break;
+                case 'calendar':
+                    $this->readCalendar();
+                    break;
                 default:
                     $this->readHomeFile();
                     break;
@@ -37,5 +41,13 @@ class HomeController {
 
         public function readAboutFile(){
             include('view/about.php');
+        }
+
+        public function readCalendar(){
+            $eventName = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
+            $eventDate = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
+            $eventLocation = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
+            $html = $this->HomeLogic->readCalendar($eventName, $eventDate, $eventLocation);
+            include 'view/calendar/calendarView.php';
         }
 }
