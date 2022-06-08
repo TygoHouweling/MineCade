@@ -11,7 +11,8 @@ class Display
     $html = "";
     $html .= "<table class='table table-striped'>";
 
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    //while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+      foreach($result as $row) {
       if ($tableheader == false) {
         $html .= "<tr>";
         foreach ($row as $key => $value) {
@@ -29,9 +30,9 @@ class Display
       }
       if ($actionMode) {
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='?con=admin&op=update&id={$row['event_id']}'>Edit</i></a>";
-        $html .= "<a href='?con=admin&op=delete&id={$row['event_id']}'>Delete</i></i></a>";
-        $html .= "<a href='?con=admin&op=read&id={$row['event_id']}'>Read</a>";
+        $html .= "<a href='?con=admin&op=update&id={$row['id']}'>Edit </i></a>";
+        $html .= "<a href='?con=admin&op=deleterequest&id={$row['id']}'>Delete </i></a>";
+        $html .= "<a href='?con=admin&op=read&id={$row['id']}'>Read</i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
@@ -39,53 +40,6 @@ class Display
     $html .= "</table>";
     return $html;
   }
-
-
-
-
-  public function shopcart($result, $product)
-  {
-
-    $total = 0;
-    $pay = false;
-    $html = "";
-
-
-    // $product = $product->fetch(PDO::FETCH_ASSOC);
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-    $image = 'view/assets/image/' . $result['product_thumbnail'];
-    $image = ($result['product_thumbnail'] != '' ? $image : "https://via.placeholder.com/350x430");
-
-    $quantity = $product * $result['product_price'];
-    $price = str_replace('.', ',', $quantity);
-
-    $html .= "<tr>
-                  <td>
-                      <div class='product-item'>
-                          <a class='product-thumb' href='#'><img src='{$image}' alt='Product'></a>
-                          <div class='product-info'>
-                              <h4 class='product-title'><a href='#'>{$result['product_name']}</a></h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td class='text-center'>
-                      <div class='count-input'>
-                          <p>{$product}</p>
-                      </div>
-                  </td>
-                  <td></td>
-                  <td class='text-center text-lg text-medium'>€ {$price}</td>
-                  <td class='text-center'><a class='remove-from-cart remove' id='{$result['product_id']}' href='#' data-original-title='Remove item'><i class='fa fa-trash'></i></a></td>
-              </tr>
-              ";
-    unset($_SESSION['total_price']);
-    $total = 0;
-    $_SESSION['total_price'] = $total + $quantity;
-
-
-    return $html;
-  }
-
 
   public function CreateCard($result)
   {
@@ -115,46 +69,6 @@ class Display
     return $html;
   }
 
-  public function CreateCardCustomer($result)
-  {
-    // echo "<pre>";
-    // var_dump($result);
-    // echo "</pre>";
-
-    $html = '';
-
-    $html .= "<div class='card'>";
-    $html .= "<div class='container'>";
-    $html .= "<p>Voornaam: {$result['customer_firstname']}</p>";
-    $html .= "<p>Achternaam: {$result['customer_lastname']}</p>";
-    $html .= "<p>Straat: {$result['customer_street']}</p>";
-    $html .= "<p>Huisnummer: {$result['customer_housenumber']}</p>";
-    $html .= "<p>Email: {$result['customer_email']}</p>";
-
-    $html .= "</div>";
-    $html .= "</div>";
-
-    return $html;
-  }
-
-  public function CreateCardGenre($result)
-  {
-
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-
-    $html = '';
-
-    $html .= "<div class='card'>";
-    $html .= "<div class='container'>";
-    $html .= "<h4><b>Genre Informatie</b></h4>";
-    $html .= "<p>Genre: {$result['categorie_name']}</p>";
-
-    $html .= "</div>";
-    $html .= "</div>";
-
-    return $html;
-  }
-
   public function PageNavigation($pages, $page)
   {
 
@@ -173,9 +87,9 @@ class Display
       $prevArrow = 1;
     }
 
-
     $html .= "<ul class='pagination'>";
-    $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
+
+    $html .= '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
     for ($x = 1; $x <= $pages; $x++) {
       if ($page == $x) {
 
@@ -185,8 +99,10 @@ class Display
         $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $x . '">' . $x . '</a></li>';
       }
     }
-    $html .=  '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+    $html .=  '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+ 
     $html .= "</ul>";
+
     $html .= "</nav>";
 
     return $html;

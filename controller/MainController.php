@@ -10,7 +10,7 @@ class MainController
     {
         $this->AuthController = new AuthController();
         $this->HomeController = new HomeController();
-        $this->AdminController = new AdminController();
+        $this->EventsController = new EventsController();
         $this->Display = new Display();
     }
     public function __destruct()
@@ -31,7 +31,7 @@ class MainController
                     break;
 
                 case 'admin';
-                    $this->AdminController->handleRequest();
+                    $this->EventsController->handleRequest();
                     break;
 
                 default:
