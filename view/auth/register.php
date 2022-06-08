@@ -34,7 +34,7 @@ require 'view/components/header.php'; ?>
             <input class="form-control" type="text"  name="fname" placeholder="Lastname"/>
             <input class="form-control" type="text" name="lname" placeholder="Username"  />
             <input class="form-control" type="text" name="email" placeholder="Email"  />
-            <input class="form-control"type="password" placeholder="Password" >
+            <input class="form-control" type="password" placeholder="Password" name="password">
             <button onclick='target1()' class="btn btn-success">Create New Account</button>
             <span class="text-center font-weight-bold">or</span>
             <hr>          

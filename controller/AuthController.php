@@ -83,14 +83,14 @@ class AuthController {
             $username = trim($_POST["uname"]);
         }
 
-        if(empty(trim($_POST["psw"]))){
+        if(empty(trim($_POST["password"]))){
             $password_err = "Please enter your password.";
         } else{
-            $password = trim($_POST["psw"]);
-            //$encptpsw = md5($password);
+            $password = trim($_POST["password"]);
+            $encptpsw = md5($password);
         }
 
-        $res = $this->AuthLogic->readAuth($username,$password);
+        $res = $this->AuthLogic->readAuth($username,$encptpsw);
         include 'view/auth/read.php';
     }
 
@@ -114,11 +114,11 @@ class AuthController {
             $username = trim($_POST["uname"]);
         }
 
-        if(empty(trim($_POST["psw"]))){
+        if(empty(trim($_REQUEST["password"]))){
             $password_err = "Please enter your password.";
         } else{
-            $password = trim($_POST["psw"]);
-            //$encptpsw = md5($password);
+            $password = trim($_POST["password"]);
+            $encptpsw = md5($password);
         }
 
         if(empty(trim($_POST["email"]))){
@@ -127,7 +127,7 @@ class AuthController {
             $email = trim($_POST["email"]);
         }
 
-        $res = $this->AuthLogic->createAuth($firstname, $lastname, $username, $password, $email);
+        $res = $this->AuthLogic->createAuth($firstname, $lastname, $username, $encptpsw, $email);
         include 'view/auth/read.php';
     }
 
@@ -160,7 +160,7 @@ class AuthController {
             $password_err = "Please enter your password.";
         } else{
             $password = trim($_POST["psw"]);
-            //$encptpsw = md5($password);
+            $encptpsw = md5($password);
         }
 
         if(empty(trim($_POST["email"]))){
@@ -169,7 +169,7 @@ class AuthController {
             $email = trim($_POST["email"]);
         }
 
-        $res = $this->AuthLogic->editAuth($firstname, $lastname, $username, $password, $email);
+        $res = $this->AuthLogic->editAuth($firstname, $lastname, $username, $encptpsw, $email);
         include 'view/auth/update.php';
     }
 
