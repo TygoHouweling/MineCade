@@ -11,7 +11,8 @@ class Display
     $html = "";
     $html .= "<table class='table table-striped'>";
 
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    //while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+      foreach($result as $row) {
       if ($tableheader == false) {
         $html .= "<tr>";
         foreach ($row as $key => $value) {
@@ -29,9 +30,9 @@ class Display
       }
       if ($actionMode) {
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='?con=admin&op=update&id={$row['event_id']}'>Edit</i></a>";
-        $html .= "<a href='?con=admin&op=delete&id={$row['event_id']}'>Delete</i></i></a>";
-        $html .= "<a href='?con=admin&op=read&id={$row['event_id']}'>Read</a>";
+        $html .= "<a href='?con=admin&op=update&id={$row['id']}'>Edit </i></a>";
+        $html .= "<a href='?con=admin&op=deleterequest&id={$row['id']}'>Delete </i></a>";
+        $html .= "<a href='?con=admin&op=read&id={$row['id']}'>Read</i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
@@ -86,9 +87,9 @@ class Display
       $prevArrow = 1;
     }
 
-
     $html .= "<ul class='pagination'>";
-    $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
+
+    $html .= '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $prevArrow . '"> &laquo; </a></li>';
     for ($x = 1; $x <= $pages; $x++) {
       if ($page == $x) {
 
@@ -98,8 +99,10 @@ class Display
         $html .= '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $x . '">' . $x . '</a></li>';
       }
     }
-    $html .=  '<li class="link page-item"><a class="page-link" href="index.php?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+    $html .=  '<li class="link page-item"><a class="page-link" href="?con=' . $_REQUEST['con'] . '&op=' . $_REQUEST['op'] . '&number=' . $nextArrow . '"> &raquo; </a></li>';
+ 
     $html .= "</ul>";
+
     $html .= "</nav>";
 
     return $html;
