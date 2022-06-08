@@ -1,5 +1,6 @@
 <?php
 require 'view/components/header.php';
+require 'view/components/sidebar.php';
 
 echo $events;
 echo $pagination;

@@ -57,9 +57,8 @@ class EventsController {
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
         $res = $this->EventsLogic->readEvents($id);
-        var_dump($res);
         $html = $this->Display->CreateCard($res);
-        var_dump($html);
+        //var_dump($html);
     
         include 'view/admin/events/read.php';
     }
