@@ -38,4 +38,15 @@ class HomeLogic
 
         return $result;
     }
+
+    public function readCalendar($eventName, $eventDate, $eventLocation){
+        try {
+        $sql = "SELECT event_name, event_date, event_location FROM events";
+        $results = $this->DataHandler->readData($sql);
+        return $results;
+    } catch (Exception $e) {
+        throw $e;
+
+    }
+    }
 }
