@@ -7,38 +7,10 @@ include 'view/components/header.php';
 <head>
     <meta charset="utf-8">
     <title>PHP Calendar</title>
-    <link href="view/assets/style/calendar.css">
+    <link rel="stylesheet" href="view/assets/style/calendar.css">
+    <!-- <link rel="stylesheet" href="view/assets/style/header.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <style> 
-        .container {
-            font-family: 'Montserrat', sans-serif;
-            margin: 60px auto;
-        }
-        .list-inline {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .title {
-            font-weight: bold;
-            font-size: 26px;
-        }
-        th {
-            text-align: center;
-        }
-        td {
-            height: 100px;
-        }
-        th:nth-of-type(6), td:nth-of-type(6) {
-            color: blue;
-        }
-        th:nth-of-type(7), td:nth-of-type(7) {
-            color: red;
-        }
-        .today {
-            background-color: ghostwhite;
-        } 
-     </style>
 </head>
 <body>
     <div class="container">
