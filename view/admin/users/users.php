@@ -4,26 +4,13 @@ if (!isset($_SESSION)) {
     session_start();
   }
 
-  if(empty($_SESSION['customer_admin']) || $_SESSION['customer_admin'] === '0'){
+  if(empty($_SESSION['loggedin']) || $_SESSION['loggedin'] === false){
 
     $_SESSION['danger'] = "U heeft geen toegang";
     header('Location: index.php');
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php 
-    $pageTitle = 'Klanten';
-    include 'view/components/header.php';
-    ?>
-    <link href="view/assets/sidebar.css" rel="stylesheet">
-
-</head>
-
-<body>
 
     <div id="wrapper">
 
@@ -33,7 +20,7 @@ if (!isset($_SESSION)) {
         <h1 class="h3 mb-4 text-gray-800">Gebruikers Overzicht</h1>
     </div>
     <div class="m-3">
-    <?= $customers ?>
+    <?= $user ?>
     </div>     
 
 </div>

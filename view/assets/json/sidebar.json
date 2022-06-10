@@ -1,0 +1,16 @@
+[{
+        "name": "Events",
+        "url": "?con=admin&op=test",
+        "icon": "fa-regular fa-calendar"
+    },
+    {
+        "name": "About us",
+        "url": "?con=about",
+        "icon": "fa-regular fa-address-card"
+    },
+    {
+        "name": "Users",
+        "url": "?con=user",
+        "icon": "fa-solid fa-users"
+    }
+]

@@ -77,6 +77,7 @@ class EventsController {
         $pagination = $this->Display->PageNavigation($pages,$page);
         $events = $this->Display->createTable($res[1], true);
         include 'view/admin/events.php';
+        //var_dump($_SESSION);
     }
 
 
