@@ -66,4 +66,13 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
         $week = '';
     }
 }
+
+    //checken of de 2 datums over een komen
+    // if ($html == $date) {
+    //     echo $html;
+    // } else {
+    //     echo "Event is niet gevonden!";
+        
+    // }
+    var_dump($html);
 ?>

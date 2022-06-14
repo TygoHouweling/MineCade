@@ -42,10 +42,10 @@ class HomeLogic
     public function readCalendar($eventName, $eventDate, $eventLocation){
         try {
         $sql = "SELECT event_name, event_date, event_location FROM events";
-        $results = $this->DataHandler->readData($sql);
-        $row = $results->fetch(PDO::FETCH_ASSOC);
-        var_dump($row);
-        return $row;
+        $result = $this->DataHandler->readData($sql);
+        $results = $result->fetch(PDO::FETCH_ASSOC);
+       //var_dump($results);
+        return $results;
     } catch (Exception $e) {
         throw $e;
 
