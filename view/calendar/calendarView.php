@@ -15,9 +15,9 @@ include 'view/components/header.php';
 <body>
     <div class="container">
     <ul class="list-inline">
-            <li class="list-inline-item"><a href="?op=calendar&ym=<?= $prev; ?>" class="btn btn-link">&lt; prev</a></li>
+            <li class="list-inline-item"><a href="?op=calendar&ym=<?= $prev; ?>" class="btn btn-link">&lt; Previous month</a></li>
             <li class="list-inline-item"><span class="title"><?= $title; ?></span></li>
-            <li class="list-inline-item"><a href="?op=calendar&ym=<?= $next; ?>" class="btn btn-link">next &gt;</a></li>
+            <li class="list-inline-item"><a href="?op=calendar&ym=<?= $next; ?>" class="btn btn-link">Next month &gt;</a></li>
         </ul>
         <p class="text-right"><a href="?op=calendar">Today</a></p>
         <table class="table table-bordered">
