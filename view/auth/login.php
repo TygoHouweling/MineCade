@@ -53,7 +53,7 @@ if (!isset($_SESSION)) {
         <div class="name-content">
           <p>Login here to experience the best blogs.</p>
         </div>
-          <form action="index.php?con=auth&op=login" method="POST">
+          <form id="formlg" action="index.php?con=auth&op=login" method="POST">
             <input class="form-control" name="uname" type="text" placeholder="Email"  />
             <input class="form-control" name="password" type="password" placeholder="Password" >
             <button onclick="window.open('index.php?con=auth&op=showregister','_self')" class="login">Log In</button>

@@ -54,7 +54,7 @@
     margin-bottom: 5rem;
   }
   
-  form {
+  #formlg {
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -65,18 +65,18 @@
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   }
   
-  form input {
+  #formlg input {
     outline: none;
     padding: 0.8rem 1rem;
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
   }
   
-  form input:focus {
+  #formlg input:focus {
     border: 1.8px solid #1877f2;
   }
   
-  form .login {
+  #formlg .login {
     outline: none;
     border: none;
     background: #1877f2;
@@ -86,12 +86,12 @@
     color: #fff;
   }
   
-  form .login:hover {
+  #formlg .login:hover {
     background: #0f71f1;
     cursor: pointer;
   }
   
-  form a {
+  #formlg a {
     text-decoration: none;
     text-align: center;
     font-size: 1rem;
@@ -99,12 +99,12 @@
     color: #1877f2;
   }
   
-  form hr {
+  #formlg hr {
     background: #f7f7f7;
     margin: 1rem;
   }
   
-  form .create-account {
+  #formlg .create-account {
     outline: none;
     border: none;
     background: #06b909;
@@ -116,7 +116,7 @@
     margin: 0 auto;
   }
   
-  form .create-account:hover {
+  #formlg .create-account:hover {
     background: #03ad06;
     cursor: pointer;
   }

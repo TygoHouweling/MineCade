@@ -29,7 +29,7 @@ require 'view/components/header.php'; ?>
         <div class="name-content">
           <p>Register here to join the best blogs makers.</p>
         </div>
-          <form action="index.php?con=auth&op=registreer" method="POST">
+          <form id="formlg" action="index.php?con=auth&op=registreer" method="POST">
             <input class="form-control" type="text" name="uname" placeholder="Firstname"/>
             <input class="form-control" type="text"  name="fname" placeholder="Lastname"/>
             <input class="form-control" type="text" name="lname" placeholder="Username"  />
