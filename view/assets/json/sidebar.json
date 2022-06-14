@@ -6,7 +6,7 @@
     },
     {
         "name":"About us",
-        "url":"?con=about",
+        "url":"?con=admin&op=about",
         "icon":"fa-regular fa-address-card"
     },
     {
