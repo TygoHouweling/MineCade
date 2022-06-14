@@ -13,7 +13,7 @@ require 'view/components/sidebar.php';
 
             <div class="col-md-6">
 
-                <form action="?con=admin&op=events" method="POST" enctype="multipart/form-data">
+                <form action="?con=admin&op=about" method="POST" enctype="multipart/form-data">
 
                     <table class="form_styling">
                         <tr>
@@ -24,7 +24,7 @@ require 'view/components/sidebar.php';
                         <tr>
                             <td>
                                 <!-- <input type="text" name="event_desc" placeholder="event_desc" required> -->
-                                <textarea class="tinymce" id="mceDEMO" name="about_header"></textarea>
+                                <textarea class="tinymce" id="mceDEMO" name="about_header"><?= $about[0]['header'] ?></textarea>
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/tinymce.min.js" integrity="sha512-XQOOk3AOZDpVgRcau6q9Nx/1eL0ATVVQ+3FQMn3uhMqfIwphM9rY6twWuCo7M69rZPdowOwuYXXT+uOU91ktLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 <script>
                                     tinymce.init({
@@ -44,7 +44,7 @@ require 'view/components/sidebar.php';
                         <tr>
                             <td>
                                 <!-- <input type="text" name="event_desc" placeholder="event_desc" required> -->
-                                <textarea class="tinymce" id="mceDEMO" name="about_main"></textarea>
+                                <textarea class="tinymce" id="mceDEMO" name="about_main"><?= $about[0]['main'] ?></textarea>
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/tinymce.min.js" integrity="sha512-XQOOk3AOZDpVgRcau6q9Nx/1eL0ATVVQ+3FQMn3uhMqfIwphM9rY6twWuCo7M69rZPdowOwuYXXT+uOU91ktLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 <script>
                                     tinymce.init({
@@ -64,7 +64,7 @@ require 'view/components/sidebar.php';
                         <tr>
                             <td>
                                 <!-- <input type="text" name="event_desc" placeholder="event_desc" required> -->
-                                <textarea class="tinymce" id="mceDEMO" name="about_footer"></textarea>
+                                <textarea class="tinymce" id="mceDEMO" name="about_footer"><?= $about[0]['contact'] ?></textarea>
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/tinymce.min.js" integrity="sha512-XQOOk3AOZDpVgRcau6q9Nx/1eL0ATVVQ+3FQMn3uhMqfIwphM9rY6twWuCo7M69rZPdowOwuYXXT+uOU91ktLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 <script>
                                     tinymce.init({

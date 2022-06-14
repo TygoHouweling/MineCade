@@ -1,6 +1,8 @@
 <?php
 include "components/header.php";
 
+// echo "<pre>";
+// die(var_dump($about));
 ?>
 
 <body class="d-flex flex-column min-vh-100">
@@ -12,7 +14,7 @@ include "components/header.php";
 
       <div class="m-2">
         <div class="card container rounded shadow">
-          <?= $about['header'] ?>
+          <?= $about[0]['header'] ?>
         </div>
       </div>
 
@@ -20,7 +22,8 @@ include "components/header.php";
 
       <div class="m-2">
         <div class="container rounded-lg shadow card">
-          <?= $about['main'] ?>
+        
+          <?= $about[0]['main'] ?>
         </div>
       </div>
     </div>
@@ -51,7 +54,7 @@ include "components/header.php";
             </div>
           </div>
           <div>
-            <?= $about['footer'] ?>
+            <?= $about[0]['contact'] ?>
           </div>
         </div>
   </section>

@@ -79,11 +79,21 @@ class AdminLogic
 
   public function updateAboutPage()
   {
-    $sql = "SELECT * FROM aboutPage";
-    $result = $this->DataHandler->readsData($sql);
 
-    $result = $result->FetchAll(PDO::FETCH_ASSOC);
+    if(isset($_POST['submit'])){
+      $header =$_POST['about_header'];
+      $main = $_POST['about_main'];
+      $footer = $_POST['about_footer'];
+      $sql = "UPDATE aboutPage SET header = '$header',main = '$main',contact = '$footer'";
+      $result = $this->DataHandler->updateData($sql);
+    } else {
+      $sql = "SELECT * FROM aboutPage";
+      $result = $this->DataHandler->readsData($sql);
+  
+      $result = $result->FetchAll(PDO::FETCH_ASSOC);
+  
+      return $result;
+    }
 
-    return $result;
   }
 }

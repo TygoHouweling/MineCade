@@ -157,9 +157,10 @@ class EventsController
 
         if(isset($_REQUEST['submit'])){
 
+            $this->AdminLogic->updateAboutPage();
 
             $_SESSION['msg']='About pagina is succesvol aangepast';
-            include('view/admin/events.php');
+            include('view/about.php');
         } else {
             $about = $this->AdminLogic->updateAboutPage();        
             include('view/admin/about/update.php');
