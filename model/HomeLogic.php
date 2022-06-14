@@ -43,7 +43,9 @@ class HomeLogic
         try {
         $sql = "SELECT event_name, event_date, event_location FROM events";
         $results = $this->DataHandler->readData($sql);
-        return $results;
+        $row = $results->fetch(PDO::FETCH_ASSOC);
+        var_dump($row);
+        return $row;
     } catch (Exception $e) {
         throw $e;
 
