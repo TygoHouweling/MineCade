@@ -40,6 +40,10 @@ class UsersController
                     $this->CollectReadAllUsers();
                     break;
 
+                case 'readalladmin':
+                    $this->CollectReadAllAdminUsers();
+                    break;
+
                 default:
                     $this->CollectReadAllUsers();
                     break;
@@ -61,6 +65,20 @@ class UsersController
         include 'view/admin/users/read.php';
     }
 
+    public function CollectReadAllAdminUsers() {
+        $page = isset($_GET['number']) ? (int)$_GET['number'] : 1;
+        $perPage = 5;
+        $limit = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+        $res = $this->UsersLogic->readAllUsers($limit, $perPage);
+        $pages = $res[0];
+
+        $pagination = $this->Display->PageNavigation($pages, $page);
+        $adminUsers = $this->UsersLogic->readAllUsers($pages, $page, $admin = true); 
+        $adminUsers = $this->Display->createTable($adminUsers, true);
+        
+        include 'view/admin/adminUsers/adminUsers.php';
+    }
+
     public function CollectReadAllUsers()
     {
         $page = isset($_GET['number']) ? (int)$_GET['number'] : 1;
@@ -70,7 +88,7 @@ class UsersController
         $res = $this->UsersLogic->readAllUsers($limit, $perPage);
 
         $pages = $res[0];
-        //var_dump($res[1]);
+        //var_dump($res[1]); 
         $pagination = $this->Display->PageNavigation($pages, $page);
         $users = $this->Display->createTable($res[1], true);
         include 'view/admin/users.php';

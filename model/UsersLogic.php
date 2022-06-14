@@ -37,19 +37,26 @@ class UsersLogic
 
   }
 
-  public function readAllUsers($limit, $perPage)
+  public function readAllUsers($limit, $perPage, $admin = false)
   {
     try {
       $sql = "SELECT FOUND_ROWS() as total FROM users";
       $res1 = $this->DataHandler->countPages($sql, $perPage);
 
-      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM users LIMIT $limit, $perPage";
+      if ($admin) {
+        $sql = "SELECT users_id as id, firstname, lastname, email, username, user_admin FROM users WHERE user_admin = 1";
+        $res2 = $this->DataHandler->readsData($sql);
+
+        $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
+        //var_dump($res2);
+      }
+
+      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM users WHERE user_admin = 0 LIMIT $limit, $perPage";
       $res2 = $this->DataHandler->readsData($sql);
 
       $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
       $array = [$res1, $res2];
       return $array;
-
 
     } catch (Exception $e) {
       throw $e;

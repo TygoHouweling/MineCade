@@ -1,17 +1,21 @@
-[
-    {
-        "name":"Events",
-        "url":"?con=admin&op=test",
-        "icon":"fa-regular fa-calendar"
+[{
+        "name": "Events",
+        "url": "?con=admin&op=test",
+        "icon": "fa-regular fa-calendar"
     },
     {
-        "name":"About us",
-        "url":"?con=admin&op=about",
-        "icon":"fa-regular fa-address-card"
+        "name": "About us",
+        "url": "?con=admin&op=about",
+        "icon": "fa-regular fa-address-card"
     },
     {
-        "name":"Users",
-        "url":"?con=users&op=readall",
-        "icon":"fa-solid fa-users"
+        "name": "Users",
+        "url": "?con=users&op=readall",
+        "icon": "fa-solid fa-users"
+    },
+    {
+        "name": "Admin Users",
+        "url": "?con=users&op=readalladmin",
+        "icon": "fa-solid fa-users"
     }
 ]
