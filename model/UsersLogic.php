@@ -37,13 +37,13 @@ class UsersLogic
 
   }
 
-  public function readAllEvents($limit, $perPage)
+  public function readAllUsers($limit, $perPage)
   {
     try {
       $sql = "SELECT FOUND_ROWS() as total FROM users";
       $res1 = $this->DataHandler->countPages($sql, $perPage);
 
-      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM events LIMIT $limit, $perPage";
+      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM users LIMIT $limit, $perPage";
       $res2 = $this->DataHandler->readsData($sql);
 
       $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
@@ -57,19 +57,9 @@ class UsersLogic
 
   }
 
-  public function updateEvent($id, $firstname, $lastname, $email, $username) {
+  public function updateUsers($id, $firstname, $lastname, $email, $username) {
 
     try{
-
-      // if($event_image != ""){
-      //   $image = $this->FileUpload->ImageUpload($_FILES['file']['name']);
-      // }else{
-      //   $sql = "SELECT event_image FROM `events` WHERE `event_id`='{$id}'";
-      //   $result = $this->DataHandler->readData($sql);
-      //   $row = $result->fetch(PDO::FETCH_ASSOC);
-      //   $image = $row['event_image'];
-      // }
-
       $sql = "UPDATE `users` SET `firstname`='{$firstname}', `lastname`='{$lastname}', `email`='{$email}', `username`='{$username}' WHERE `users_id`='{$id}'";
       $results = $this->DataHandler->updateData($sql);
       return $results;
@@ -79,11 +69,11 @@ class UsersLogic
     }
   }
 
-  public function deleteEvent($id)
+  public function deleteUsers($id)
   {
     try{
 
-      $sql = "DELETE FROM `events` WHERE `event_id`='{$id}'";
+      $sql = "DELETE FROM `users` WHERE `users_id`='{$id}'";
       $result = $this->DataHandler->deleteData($sql);
       return $result;
 

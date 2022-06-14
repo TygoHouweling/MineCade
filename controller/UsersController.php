@@ -25,7 +25,19 @@ class UsersController
 
             switch ($op) {
                 case 'read':
-                    $this->collectReadUser();
+                    $this->collectReadUsers();
+                    break;
+                
+                case 'create':
+                    $this->collectCreateUsers();
+                    break;    
+
+                case 'update':
+                    $this->collectUpdateUsers();
+                    break;
+
+                case 'readall':
+                    $this->CollectReadAllUsers();
                     break;
 
                 default:
@@ -42,7 +54,7 @@ class UsersController
 
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
-        $res = $this->UsersLogic->readUser($id);
+        $res = $this->UsersLogic->readUsers($id);
         $html = $this->Display->CreateCard($res);
         //var_dump($html);
 
@@ -65,66 +77,63 @@ class UsersController
     }
 
 
-    // public function collectCreateUsers()
-    // {
-    //     $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
-    //     $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
-    //     $event_shortdesc = isset($_REQUEST['event_shortdesc']) ? $_REQUEST['event_shortdesc'] : NULL;
-    //     $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
-    //     $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
-    //     $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+    public function collectCreateUsers()
+    {
+        $firstname = isset($_REQUEST['firstname']) ? $_REQUEST['firstname'] : NULL;
+        $lastname = isset($_REQUEST['lastname']) ? $_REQUEST['lastname'] : NULL;
+        $email = isset($_REQUEST['email']) ? $_REQUEST['v'] : NULL;
+        $username = isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 
-    //     $already_send = isset($already_send) ? $already_send : false;
-    //     if ($already_send == true) {
-    //     } else {
-    //         if (isset($_POST['submit'])) {
-    //             $image = $this->UsersLogic->fileUpload();
-    //             $html = $this->UsersLogic->createEvent($event_name, $event_desc, $event_shortdesc, $event_date, $event_location, $event_zipcode, $image);
-    //             $_SESSION['msg'] = 'Event is aangemaakt.';
-    //             $already_send = true;
-    //         }
-    //     }
+        $already_send = isset($already_send) ? $already_send : false;
+        if ($already_send == true) {
+        } else {
+            if (isset($_POST['submit'])) {
+                $image = $this->UsersLogic->fileUpload();
+                $html = $this->UsersLogic->createUser($firstname, $lastname, $email, $username);
+                $_SESSION['msg'] = 'User is aangemaakt.';
+                $already_send = true;
+            }
+        }
 
-    //     $already_send = false;
+        $already_send = false;
 
-    //     include 'view/admin/Users/create.php';
-    // }
+        include 'view/admin/users/create.php';
+    }
 
-    // public function collectUpdateUsers()
-    // {
-    //     $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
-    //     $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
-    //     $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
-    //     $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
-    //     $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
-    //     $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+    public function collectUpdateUsers()
+    {
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+        $firstname = isset($_REQUEST['firstname']) ? $_REQUEST['firstname'] : NULL;
+        $lastname = isset($_REQUEST['lastname']) ? $_REQUEST['lastname'] : NULL;
+        $email = isset($_REQUEST['email']) ? $_REQUEST['v'] : NULL;
+        $username = isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 
-    //     if (isset($_REQUEST['updateSubmit'])) {
+        if (isset($_REQUEST['updateSubmit'])) {
 
-    //         $res = $this->EventLogic->updateEvent($id, $event_name, $event_desc, $event_date, $event_location, $event_zipcode);
-    //         $html = $this->EventLogic->readUsers($id);
-    //         $html = $this->Display->CreateCard($html);
-    //     }
+            $res = $this->UsersLogic->updateEvent($id, $firstname, $lastname, $email, $username);
+            $html = $this->UsersLogic->readUsers($id);
+            $html = $this->Display->CreateCard($html);
+        }
 
-    //     $html = $this->UsersLogic->readUsers($id);
+        $html = $this->UsersLogic->readUsers($id);
+        $html = $html->FetchAll(PDO::FETCH_ASSOC);
 
 
-    //     include 'view/admin/Users/update.php';
-    // }
+        include 'view/admin/users/update.php';
+    }
 
-    // public function deleteRequest()
-    // {
-    //     include 'view/admin/Users/deletewarning.php';
-    // }
+    public function deleteRequest()
+    {
+        include 'view/admin/users/deletewarning.php';
+    }
 
-    // public function collectDeleteEvent($id)
-    // {
-    //     $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+    public function collectDeleteUsers($id)
+    {
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
+        $html = $this->UsersLogic->deleteEvent($id);
+        //$html = $html->fetch(PDO::FETCH_ASSOC);
 
-    //     $html = $this->UsersLogic->deleteEvent($id);
-    //     //$html = $html->fetch(PDO::FETCH_ASSOC);
-
-    //     include 'view/admin/Users/deleteconfirm.php';
-    // }
+        include 'view/admin/users/deleteconfirm.php';
+    }
 }

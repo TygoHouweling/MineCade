@@ -1,9 +1,7 @@
 <?php
 require 'view/components/header.php';
-require 'view/components/sidebar.php';
 
-echo $users;
-echo $pagination;
-
+echo $html;
+echo "<button onclick='history.back()'>Go Back</button>";
 require 'view/components/footer.php';
 ?>

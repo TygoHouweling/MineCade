@@ -11,7 +11,7 @@
     },
     {
         "name":"Users",
-        "url":"?con=users",
+        "url":"?con=users&op=readall",
         "icon":"fa-solid fa-users"
     }
 ]

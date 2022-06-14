@@ -27,12 +27,14 @@ class Display
       $html .= "<tr>";
       foreach ($row as $value) {
         $html .= "<td>{$value}</td>";
+
       }
       if ($actionMode) {
+        $con = $_REQUEST["con"];
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='?con=admin&op=update&id={$row['id']}'>Edit </i></a>";
-        $html .= "<a href='?con=admin&op=deleterequest&id={$row['id']}'>Delete </i></a>";
-        $html .= "<a href='?con=admin&op=read&id={$row['id']}'>Read</i></a>";
+        $html .= "<a href='?con={$con}&op=update&id={$row['id']}'>Edit </i></a>";
+        $html .= "<a href='?con={$con}&op=deleterequest&id={$row['id']}'>Delete </i></a>";
+        $html .= "<a href='?con={$con}&op=read&id={$row['id']}'>Read</i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";

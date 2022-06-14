@@ -131,7 +131,7 @@ class EventsController
         }
 
         $html = $this->EventsLogic->readEvents($id);
-
+        $html = $html->FetchAll(PDO::FETCH_ASSOC);
 
         include 'view/admin/events/update.php';
     }
