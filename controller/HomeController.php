@@ -48,6 +48,5 @@ class HomeController {
             $eventDate = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
             $eventLocation = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
             $html = $this->HomeLogic->readCalendar($eventName, $eventDate, $eventLocation);
-            include 'view/calendar/calendarView.php';
         }
 }
