@@ -23,13 +23,13 @@ include 'view/components/header.php';
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>M</th>
-                    <th>T</th>
-                    <th>W</th>
-                    <th>T</th>
-                    <th>F</th>
-                    <th>S</th>
-                    <th>S</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thi</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
                 </tr>
             </thead>
             <tbody>

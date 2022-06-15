@@ -111,3 +111,12 @@ window.onclick = function(event) {
         }
     }
 }
+
+function loadDoc(url) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        document.querySelector('body').innerHTML = this.responseText;
+    }
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}

@@ -42,15 +42,25 @@ $week .= str_repeat('<td></td>', $str - 1);
 
 for ($day = 1; $day <= $day_count; $day++, $str++) {
 
-    $date = $ym . '-' . $day;
-    // die($date);
+    if($day <10){
+        $date = "0$day";
+    } else {
+        $date = $day;
+    }
+    $date = $ym . '-' . $date;
 
     if ($today == $date) {
-        $week .= '<td class="today">';
+        $week .= '<td class="calender_item today">';
     } else {
-        $week .= '<td>';
+        $week .= '<td class="calender_item">';
     }
-    $week .= $day . '</td>';
+    $week .= $day;
+    foreach($result as $key=>$value){
+        if($value['event_date'] == $date){  
+            $week .= "<p>".$value['event_name']."</p><br><button class='calender_button' onclick=loadDoc('?con=event&op=registerEvent&id=".$value['event_id']."')>Register for this event</button>";
+        }
+    }
+    $week .= "</td>";
 
     // Sunday OR last day of the month
     if ($str % 7 == 0 || $day == $day_count) {
@@ -66,13 +76,3 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
         $week = '';
     }
 }
-
-    //checken of de 2 datums over een komen
-    // if ($html == $date) {
-    //     echo $html;
-    // } else {
-    //     echo "Event is niet gevonden!";
-        
-    // }
-    var_dump($html);
-?>
