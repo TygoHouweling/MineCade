@@ -58,7 +58,7 @@ class EventParticipantsController
 
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
-        $res = $this->ParticipantsLogic->readParticipants($id);
+        $res = $this->ParticipantLogic->readParticipants($id);
         $html = $this->Display->CreateCard($res);
         //var_dump($html);
 

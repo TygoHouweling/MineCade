@@ -10,7 +10,7 @@ class EventParticipantsLogic
   }
   public function __destruct(){}
   
-  public function collectReadAllParticipants($userID, $eventID){
+  public function collectCreateParticipants($userID, $eventID){
     try {
 
         $sql = "INSERT INTO `event_users`(`userID`, ) VALUES ('{$userID}', '{$eventID}')";
@@ -26,11 +26,13 @@ class EventParticipantsLogic
   public function readParticipants($id)
   {
     try {
-      $sql = "SELECT * FROM event_users WHERE `userID`='{$id}'";
+      $sql = "SELECT users.firstname, users.lastname, events.event_name, events.event_date, events.event_desc ";
+      $sql .= "FROM event_users, events, users ";
+      $sql .= "WHERE `userID`='{$id}'";
       $res = $this->DataHandler->readData($sql);
   
       return $res;
-      var_dump($res);
+      //  var_dump($res);
     } catch (Exception $e){
       throw $e;
     }
@@ -43,7 +45,12 @@ class EventParticipantsLogic
       $sql = "SELECT FOUND_ROWS() as total FROM event_users";
       $res1 = $this->DataHandler->countPages($sql, $perPage);
 
-      $sql = "SELECT userID as id, eventID FROM event_users LIMIT $limit, $perPage";
+      $sql = "SELECT users.users_id as `id`, events.event_name as `Event name`, users.firstname as `Firstname`, users.lastname as `Lastname` ";
+      $sql .= "FROM event_users, events, users ";
+      $sql .= "WHERE events.event_id = event_users.eventID AND users.users_id = event_users.userID ";
+      //$sql .= "ORDER BY events.event_name ASC ";
+      $sql .= "LIMIT $limit, $perPage";
+
       $res2 = $this->DataHandler->readsData($sql);
 
       $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
