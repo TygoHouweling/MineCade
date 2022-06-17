@@ -187,7 +187,7 @@ class AuthController {
 
     public function deletewarning() 
     {
-        include 'view/auth/deletewarning.php';
+        include 'view/CRUD/deletewarning.php';
     }
 
     public function deleteuser() 

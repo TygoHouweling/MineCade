@@ -138,7 +138,7 @@ class EventsController
 
     public function deleteRequest()
     {
-        include 'view/admin/events/deletewarning.php';
+        include 'view/admin/CRUD/deletewarning.php';
     }
 
     public function collectDeleteEvent($id)
@@ -149,7 +149,7 @@ class EventsController
         $html = $this->EventsLogic->deleteEvent($id);
         //$html = $html->fetch(PDO::FETCH_ASSOC);
 
-        include 'view/admin/events/deleteconfirm.php';
+        include 'view/admin/CRUD/delete.php';
     }
 
     public function collectUpdateAboutPage()
