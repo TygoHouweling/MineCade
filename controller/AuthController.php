@@ -127,6 +127,7 @@ class AuthController {
 
         if(empty(trim($_REQUEST["password"]))){
             $password_err = "Please enter your password.";
+            header("location: ?con=Auth&op=showregister&err=$em");
         } else{
             $password = trim($_POST["password"]);
             $encptpsw = md5($password);
