@@ -46,6 +46,10 @@ require 'view/components/header.php'; ?>
             <span class="text-center font-weight-bold">or</span>
             <hr>          
             <button onclick="window.open('index.php?con=auth&op=showregister','_self')" class="login">Log In</button>
+            <span><?php if(isset($_GET['err']))
+            {echo $_GET['err'];}
+            else{echo "";}
+              ?></span>
           </form>
 
       </div>
