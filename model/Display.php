@@ -12,7 +12,6 @@ class Display
     $html .= "<table class='table table-striped'>";
     $html .= "<a href='?con=admin&op=create'><button type='button' class='btn btn-success'>Create Event</button></a>";
     //while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
-      var_dump($result);
       foreach($result as $row) {
       if ($tableheader == false) {
         $html .= "<tr>";

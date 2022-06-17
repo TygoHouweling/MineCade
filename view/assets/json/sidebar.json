@@ -14,8 +14,8 @@
         "icon": "fa-solid fa-users"
     },
     {
-        "name": "Admin Users",
-        "url": "?con=users&op=readalladmin",
+        "name": "Participants",
+        "url": "?con=participants&op=readall",
         "icon": "fa-solid fa-users"
     }
 ]

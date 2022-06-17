@@ -30,28 +30,20 @@ class UsersLogic
       $res = $this->DataHandler->readData($sql);
   
       return $res;
-      var_dump($res);
+      //var_dump($res);
     } catch (Exception $e){
       throw $e;
     }
 
   }
 
-  public function readAllUsers($limit, $perPage, $admin = false)
+  public function readAllUsers($limit, $perPage)
   {
     try {
       $sql = "SELECT FOUND_ROWS() as total FROM users";
       $res1 = $this->DataHandler->countPages($sql, $perPage);
 
-      if ($admin) {
-        $sql = "SELECT users_id as id, firstname, lastname, email, username, user_admin FROM users WHERE user_admin = 1";
-        $res2 = $this->DataHandler->readsData($sql);
-
-        $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);
-        //var_dump($res2);
-      }
-
-      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM users WHERE user_admin = 0 LIMIT $limit, $perPage";
+      $sql = "SELECT users_id as id, firstname, lastname, email, username FROM users LIMIT $limit, $perPage";
       $res2 = $this->DataHandler->readsData($sql);
 
       $res2 = $res2->FetchAll(PDO::FETCH_ASSOC);

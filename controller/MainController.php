@@ -3,6 +3,7 @@ require_once 'controller/AuthController.php';
 require_once 'controller/HomeController.php';
 require_once 'controller/EventController.php';
 require_once 'controller/UsersController.php';
+require_once 'controller/EventParticipantsController.php';
 require_once 'model/Display.php';
 
 class MainController
@@ -13,6 +14,7 @@ class MainController
         $this->HomeController = new HomeController();
         $this->EventsController = new EventsController();
         $this->UsersController = new UsersController();
+        $this->EventParticipantsController = new EventParticipantsController();
         $this->Display = new Display();
     }
     public function __destruct()
@@ -39,6 +41,10 @@ class MainController
                 case 'users';
                     $this->UsersController->handleRequest();
                     break;
+
+                case 'participants';
+                $this->EventParticipantsController->handleRequest();
+                break;
 
                 default:
                     $this->HomeController->handleRequest();
