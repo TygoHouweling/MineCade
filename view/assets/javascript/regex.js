@@ -1,34 +1,18 @@
-(function () { 
-    var testResult;
-    var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*_])(?=.{6,12}$)");
-  
-    $('.error').hide();
-    $('.fa-check-circle').hide();
-  
-    $('.password-field').on('change', function () {
-        console.log($('.password-field').val());
-        testResult = regex.test($('.password-field').val());
-        console.log(testResult);
-        if (testResult) {
-            $('.password-field').css('border-color', 'green');
-            $('.error').hide();
-            $('.fa-check-circle').show();
-        }
-        else {
-            $('.error').show().css('color', 'red');
-            $('.password-field').css('border-color', 'red');
-            $('.fa-check-circle').hide();
-        }
-    })
+var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
 
-})();
-
-
-/*
-(?=.*[a-z]) : matches letters lowercase .
-(?=.*[A-Z]) : matches letters uppercase .
-(?=.*[0-9]) : matches digit .
-(?=.*[!@#\$%\^&\*_]) : matches special character .
-(?=.{6,12}) : matches text length between 6 to 12 .
-- for more info about regular expressions visit : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-*/
+document.querySelector('.password-field').addEventListener('keyup', passwordCheck);
+document.querySelector('#correct').style.display = 'none';
+function passwordCheck(){
+    var inputval = document.querySelector('.password-field').value;
+    let filtered = regex.test(inputval);
+    if(filtered == false){
+        document.querySelector('.error').innerHTML = "Password too short";
+        document.querySelector('#correct').style.display = 'none';
+        document.querySelector('.password-field').style.borderColor = "red";
+        
+    }else{
+        document.querySelector('.error').innerHTML = "";
+        document.querySelector('#correct').style.display = 'block';
+        document.querySelector('.password-field').style.borderColor = "";
+    }
+}

@@ -39,9 +39,9 @@ require 'view/components/header.php'; ?>
             <input class="form-control" type="text" name="email" placeholder="Email"     required />
             <div class="d-flex">
             <input class="form-control password-field" type="password" placeholder="Password" name="password" id="password" required>
-            <i class="far fa-check-circle mx-3 fa-2x text-success"></i>
+            <i id="correct" class="far fa-check-circle mx-3 fa-2x text-success"></i>
             </div>
-            <span class="error">Invalid password</span>
+            <span class="error">Password needs to contain at least 7 characters</span>
             <button onclick='target1()' class="btn btn-success">Create New Account</button>
             <span class="text-center font-weight-bold">or</span>
             <hr>          
