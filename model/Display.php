@@ -10,7 +10,7 @@ class Display
     $tableheader = false;
     $html = "";
     $html .= "<table class='table table-striped'>";
-    $html .= "<a href='?con=admin&op=create'><button type='button' class='btn btn-success'>Create Event</button></a>";
+    $html .= "<a href='?con=admin&op=create'><button type='button' class='btn btn-success'>Create</button></a>";
     //while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
       foreach($result as $row) {
       if ($tableheader == false) {
@@ -27,12 +27,14 @@ class Display
       $html .= "<tr>";
       foreach ($row as $value) {
         $html .= "<td>{$value}</td>";
+
       }
       if ($actionMode) {
+        $con = $_REQUEST["con"];
         $html .= "<td style='display: flex; justify-content: space-between;'>";
-        $html .= "<a href='?con=admin&op=update&id={$row['id']}'>Edit </i></a>";
-        $html .= "<a href='?con=admin&op=deleterequest&id={$row['id']}'>Delete </i></a>";
-        $html .= "<a href='?con=admin&op=read&id={$row['id']}'>Read</i></a>";
+        $html .= "<a href='?con={$con}&op=update&id={$row['id']}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+        $html .= "<a href='?con={$con}&op=deleterequest&id={$row['id']}'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+        $html .= "<a href='?con={$con}&op=read&id={$row['id']}'><i class='fa fa-address-card' aria-hidden='true'></i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
@@ -68,6 +70,8 @@ class Display
 
     return $html;
   }
+
+  
 
   public function PageNavigation($pages, $page)
   {
