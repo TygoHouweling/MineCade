@@ -111,7 +111,18 @@ class AuthController {
         if(empty(trim($_POST["uname"]))){
             $username_err = "Please enter username.";
         } else{
-            $username = trim($_POST["uname"]);
+            $doubleUser = $this->AuthLogic->checkUserName($_POST['uname']);
+
+            // die($doubleUser);
+            if($doubleUser == true){
+                $username_err = 'Username already in use.';
+                $_SESSION['msg']=$username_err;
+                $_SESSION['error']=true;
+                $this->ReadRegister();
+                exit;
+            } else {
+                $username = trim($_POST["uname"]);
+            }
         }
 
         if(empty(trim($_REQUEST["password"]))){

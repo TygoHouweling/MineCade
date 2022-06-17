@@ -56,6 +56,21 @@ class AuthLogic
       throw $e;
     }
   }
+
+  public function checkUserName($user)
+  {
+    $sql = "SELECT username FROM users";
+    $res = $this->DataHandler->readData($sql);
+    $result = $res->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $key=>$value){
+      if($value['username']==$user){
+        return true;
+      }
+    }
+    return false;
+
+  }
   
 }
 
