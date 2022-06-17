@@ -1,5 +1,8 @@
 <?php
 require 'view/components/header.php'; ?>
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+
 
     <!-- <form action='index.php?con=auth&op=registreer' method="POST"> 
         
@@ -30,11 +33,15 @@ require 'view/components/header.php'; ?>
           <p>Register here to join the best blogs makers.</p>
         </div>
           <form id="formlg" action="index.php?con=auth&op=registreer" method="POST">
-            <input class="form-control" type="text" name="uname" placeholder="Firstname"/>
-            <input class="form-control" type="text"  name="fname" placeholder="Lastname"/>
-            <input class="form-control" type="text" name="lname" placeholder="Username"  />
-            <input class="form-control" type="text" name="email" placeholder="Email"  />
-            <input class="form-control" type="password" placeholder="Password" name="password">
+            <input class="form-control" type="text" name="uname" placeholder="Firstname" required />
+            <input class="form-control" type="text"  name="fname" placeholder="Lastname" required />
+            <input class="form-control" type="text" name="lname" placeholder="Username"  required />
+            <input class="form-control" type="text" name="email" placeholder="Email"     required />
+            <div class="d-flex">
+            <input class="form-control password-field" type="password" placeholder="Password" name="password" id="password" required>
+            <i class="far fa-check-circle mx-3 fa-2x text-success"></i>
+            </div>
+            <span class="error">Invalid password</span>
             <button onclick='target1()' class="btn btn-success">Create New Account</button>
             <span class="text-center font-weight-bold">or</span>
             <hr>          
@@ -278,4 +285,6 @@ form .create-account:hover {
 }
 
 </style>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script><script  src="view/assets/javascript/regex.js"></script>
 <?php require 'view/components/footer.php'; ?>
