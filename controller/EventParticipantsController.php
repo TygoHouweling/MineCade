@@ -24,9 +24,6 @@ class EventParticipantsController
             $op = isset($_GET['op']) ? $_GET['op'] : '';
 
             switch ($op) {
-                case 'create':
-                    $this->collectCreateParticipants();
-                    break;
 
                 case 'read':
                     $this->collectReadParticipant();
@@ -34,14 +31,6 @@ class EventParticipantsController
                 
                 case 'readall':
                     $this->CollectReadAllParticipants();
-                    break;
-
-                case 'update':
-                    $this->collectUpdateParticipants();
-                    break;
-
-                case 'delete':
-                    $this->collectDeleteParticipant($_REQUEST['id']);
                     break;
 
                 default:

@@ -48,8 +48,13 @@ class EventParticipantsLogic
       $sql = "SELECT users.users_id as `id`, events.event_name as `Event name`, users.firstname as `Firstname`, users.lastname as `Lastname` ";
       $sql .= "FROM event_users, events, users ";
       $sql .= "WHERE events.event_id = event_users.eventID AND users.users_id = event_users.userID ";
-      //$sql .= "ORDER BY events.event_name ASC ";
+      if(isset($_REQUEST['submit'])){
+        $sql .= "AND events.event_name LIKE '%".$_REQUEST['name']."%'";
+        // die($sql);
+      }
       $sql .= "LIMIT $limit, $perPage";
+
+
 
       $res2 = $this->DataHandler->readsData($sql);
 
