@@ -60,18 +60,9 @@ class EventsLogic
   public function updateEvent($id, $event_name, $event_desc, $event_date, $event_location, $event_zipcode) {
 
     try{
-
-      // if($event_image != ""){
-      //   $image = $this->FileUpload->ImageUpload($_FILES['file']['name']);
-      // }else{
-      //   $sql = "SELECT event_image FROM `events` WHERE `event_id`='{$id}'";
-      //   $result = $this->DataHandler->readData($sql);
-      //   $row = $result->fetch(PDO::FETCH_ASSOC);
-      //   $image = $row['event_image'];
-      // }
-
       $sql = "UPDATE `events` SET `event_name`='{$event_name}', `event_desc`='{$event_desc}', `event_date`='{$event_date}', `event_location`='{$event_location}', `event_zipcode`='{$event_zipcode}'  WHERE `event_id`='{$id}'";
       $results = $this->DataHandler->updateData($sql);
+      $results = $html->FetchAll(PDO::FETCH_ASSOC);
       return $results;
 
     } catch (Exception $e){
