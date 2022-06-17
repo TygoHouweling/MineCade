@@ -14,9 +14,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
-							<h1>Bootstrap 4<br>
-								menu</h1>
-							<p>scroll for nav animation</p>
+							<h1>Minecade</h1>
+							<p>Scroll down to see our upcoming events</p>
 						</div>
 					</div>
 				</div>
