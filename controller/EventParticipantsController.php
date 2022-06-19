@@ -33,6 +33,18 @@ class EventParticipantsController
                     $this->CollectReadAllParticipants();
                     break;
 
+                case 'deleterequest':
+                    $this->deleteRequest();
+                    break;
+
+                case 'delete':
+                    $this->collectDeleteParticipant($_REQUEST['id']);
+                    break;
+
+                case 'update':
+                    $this->collectUpdateParticipants();
+                    break;
+
                 default:
                     $this->CollectReadAllParticipants();
                     break;
@@ -67,5 +79,21 @@ class EventParticipantsController
         $pagination = $this->Display->PageNavigation($pages, $page);
         $participants = $this->Display->createTable($res[1], true);
         include 'view/admin/participants.php';
+    }
+
+    public function deleteRequest()
+    {
+        include 'view/admin/CRUD/deletewarning.php';
+    }
+
+    public function collectDeleteParticipant($id)
+    {
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+
+
+        $html = $this->ParticipantLogic->deleteParticipant($id);
+        //$html = $html->fetch(PDO::FETCH_ASSOC);
+
+        include 'view/admin/CRUD/delete.php';
     }
 }

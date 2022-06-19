@@ -73,7 +73,7 @@ class EventParticipantsLogic
   {
     try{
 
-      $sql = "DELETE FROM `event_users` WHERE `eventID`='{$id}'";
+      $sql = "DELETE FROM `event_users` WHERE `userID`='{$id}'";
       $result = $this->DataHandler->deleteData($sql);
       return $result;
 

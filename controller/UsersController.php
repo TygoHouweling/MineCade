@@ -124,7 +124,7 @@ class UsersController
 
     public function deleteRequest()
     {
-        include 'view/admin/users/deletewarning.php';
+        include 'view/admin/CRUD/deletewarning.php';
     }
 
     public function collectDeleteUsers($id)
@@ -134,6 +134,6 @@ class UsersController
         $html = $this->UsersLogic->deleteEvent($id);
         //$html = $html->fetch(PDO::FETCH_ASSOC);
 
-        include 'view/admin/users/deleteconfirm.php';
+        include 'view/admin/CRUD/delete.php';
     }
 }
