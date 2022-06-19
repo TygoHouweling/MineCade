@@ -9,7 +9,7 @@
 
             <div class="col-md-6">
 
-                <form action="?con=admin&op=events" method="POST" enctype="multipart/form-data">
+                <form action="?con=admin&op=createEvent" method="POST" enctype="multipart/form-data">
 
                     <table class="form_styling">
                         <tr>
