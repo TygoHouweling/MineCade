@@ -62,7 +62,6 @@ class EventsLogic
     try{
       $sql = "UPDATE `events` SET `event_name`='{$event_name}', `event_desc`='{$event_desc}', `event_date`='{$event_date}', `event_location`='{$event_location}', `event_zipcode`='{$event_zipcode}'  WHERE `event_id`='{$id}'";
       $results = $this->DataHandler->updateData($sql);
-      $results = $html->FetchAll(PDO::FETCH_ASSOC);
       return $results;
 
     } catch (Exception $e){

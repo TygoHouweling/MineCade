@@ -37,7 +37,7 @@ class EventsController
                     $this->collectDeleteEvent($_REQUEST['id']);
                     break;
 
-                case 'create':
+                case 'createEvent':
                     $this->collectCreateEvents();
                     break;
 
@@ -91,49 +91,43 @@ class EventsController
 
     public function collectCreateEvents()
     {
-        $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
-        $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
-        $event_shortdesc = isset($_REQUEST['event_shortdesc']) ? $_REQUEST['event_shortdesc'] : NULL;
-        $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
-        $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
-        $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
-
-        $already_send = isset($already_send) ? $already_send : false;
-        if ($already_send == true) {
+        if (isset($_REQUEST['submit'])) {
+            $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
+            $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
+            $event_shortdesc = isset($_REQUEST['event_shortdesc']) ? $_REQUEST['event_shortdesc'] : NULL;
+            $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
+            $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
+            $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+            $image = $this->AdminLogic->fileUpload();
+            $html = $this->AdminLogic->createEvent($event_name, $event_desc, $event_shortdesc, $event_date, $event_location, $event_zipcode, $image);
+            $_SESSION['msg'] = 'Event is aangemaakt.';
+            $this->CollectReadAllEvents();
         } else {
-            if (isset($_POST['submit'])) {
-                $image = $this->EventsLogic->fileUpload();
-                $html = $this->EventsLogic->createEvent($event_name, $event_desc, $event_shortdesc, $event_date, $event_location, $event_zipcode, $image);
-                $_SESSION['msg'] = 'Event is aangemaakt.';
-                $already_send = true;
-            }
+            include 'view/admin/events/create.php';
         }
-
-        $already_send = false;
-
-        include 'view/admin/events/create.php';
     }
 
     public function collectUpdateEvents()
     {
+
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
-        $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
-        $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
-        $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
-        $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
-        $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
-
-        if (isset($_REQUEST['updateSubmit'])) {
-
-            $res = $this->EventLogic->updateEvent($id, $event_name, $event_desc, $event_date, $event_location, $event_zipcode);
-            $html = $this->EventLogic->readEvents($id);
-            $html = $this->Display->CreateCard($html);
+        if (isset($_REQUEST['submit'])) {
+            $event_name = isset($_REQUEST['event_name']) ? $_REQUEST['event_name'] : NULL;
+            $event_desc = isset($_REQUEST['event_desc']) ? $_REQUEST['event_desc'] : NULL;
+            $event_date = isset($_REQUEST['event_date']) ? $_REQUEST['event_date'] : NULL;
+            $event_location = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
+            $event_zipcode = isset($_REQUEST['event_zipcode']) ? $_REQUEST['event_zipcode'] : NULL;
+            $res = $this->EventsLogic->updateEvent($id, $event_name, $event_desc, $event_date, $event_location, $event_zipcode);
+            $_SESSION['msg']='Event has been updated';
+            $this->CollectReadAllEvents();
+        } else {
+            $html = $this->EventsLogic->readEvents($id);
+            $html = $html->FetchAll(PDO::FETCH_ASSOC);
+    
+            include 'view/admin/events/update.php';
         }
 
-        $html = $this->EventsLogic->readEvents($id);
-        $html = $html->FetchAll(PDO::FETCH_ASSOC);
 
-        include 'view/admin/events/update.php';
     }
 
     public function deleteRequest()
@@ -155,16 +149,15 @@ class EventsController
     public function collectUpdateAboutPage()
     {
 
-        if(isset($_REQUEST['submit'])){
+        if (isset($_REQUEST['submit'])) {
 
             $this->AdminLogic->updateAboutPage();
 
-            $_SESSION['msg']='About pagina is succesvol aangepast';
+            $_SESSION['msg'] = 'About pagina is succesvol aangepast';
             include('view/about.php');
         } else {
-            $about = $this->AdminLogic->updateAboutPage();        
+            $about = $this->AdminLogic->updateAboutPage();
             include('view/admin/about/update.php');
         }
-
     }
 }
