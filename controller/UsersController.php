@@ -36,6 +36,14 @@ class UsersController
                     $this->collectUpdateUsers();
                     break;
 
+                case 'deleterequest':
+                    $this->deleteRequest();
+                    break;
+    
+                case 'delete':
+                    $this->collectDeleteUsers($_REQUEST['id']);
+                    break;
+
                 case 'readall':
                     $this->CollectReadAllUsers();
                     break;
@@ -105,7 +113,7 @@ class UsersController
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
         $firstname = isset($_REQUEST['firstname']) ? $_REQUEST['firstname'] : NULL;
         $lastname = isset($_REQUEST['lastname']) ? $_REQUEST['lastname'] : NULL;
-        $email = isset($_REQUEST['email']) ? $_REQUEST['v'] : NULL;
+        $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : NULL;
         $username = isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 
         if (isset($_REQUEST['updateSubmit'])) {
@@ -131,7 +139,7 @@ class UsersController
     {
         $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
-        $html = $this->UsersLogic->deleteEvent($id);
+        $html = $this->UsersLogic->deleteUsers($id);
         //$html = $html->fetch(PDO::FETCH_ASSOC);
 
         include 'view/admin/CRUD/delete.php';
