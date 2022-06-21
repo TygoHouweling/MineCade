@@ -33,7 +33,7 @@ $sidebar = $mainController->collectReadJSON('view/assets/json/sidebar.json');
             <ul class="logout">
                 <li>
                    <a href="?con=auth&op=logout">
-                         <i class="fa fa-power-off fa-2x"></i>
+                      <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <span class="nav-text">
                             Logout
                         </span>

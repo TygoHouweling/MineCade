@@ -73,11 +73,11 @@ class EventParticipantsController
         $limit = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
         $res = $this->ParticipantLogic->readAllParticipants($limit, $perPage);
-
+        //var_dump($res);
         $pages = $res[0];
         //var_dump($res[1]);
         $pagination = $this->Display->PageNavigation($pages, $page);
-        $participants = $this->Display->createTable($res[1], true);
+        $participants = $this->Display->createTable($res[1], false, true);
         include 'view/admin/participants.php';
     }
 

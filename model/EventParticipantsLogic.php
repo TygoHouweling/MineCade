@@ -26,6 +26,7 @@ class EventParticipantsLogic
   public function readParticipants($id)
   {
     try {
+      //var_dump($id);
       $sql = "SELECT users.firstname, users.lastname, events.event_name, events.event_date, events.event_desc ";
       $sql .= "FROM event_users, events, users ";
       $sql .= "WHERE `userID`='{$id}'";

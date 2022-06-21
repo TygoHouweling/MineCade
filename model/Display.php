@@ -3,7 +3,7 @@
 class Display
 {
 
-  public function CreateTable($result, $actionMode = false)
+  public function CreateTable($result, $actionMode = false, $participants = false)
   {
     //var_dump($actionMode);
 
@@ -14,9 +14,16 @@ class Display
       foreach($result as $row) {
       if ($tableheader == false) {
         $html .= "<tr>";
+
+
         foreach ($row as $key => $value) {
           $html .= "<th>{$key}</th>";
         }
+
+        if($participants) {
+          $html .= "<th>Actions</th>";
+        }
+
         if ($actionMode) {
           $html .= "<th>Actions</th>";
         }
@@ -34,6 +41,12 @@ class Display
         $html .= "<a href='?con={$con}&op=update&id={$row['id']}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
         $html .= "<a href='?con={$con}&op=deleterequest&id={$row['id']}'><i class='fa fa-trash' aria-hidden='true'></i></a>";
         $html .= "<a href='?con={$con}&op=read&id={$row['id']}'><i class='fa fa-address-card' aria-hidden='true'></i></a>";
+        $html .= "</td>";
+      }
+      if ($participants) {
+        $con = $_REQUEST["con"];
+        $html .= "<td style='display: flex; justify-content: space-between;'>";
+        $html .= "<a href='?con={$con}&op=deleterequest&id={$row['id']}'><i class='fa fa-trash' aria-hidden='true'></i></a>";
         $html .= "</td>";
       }
       $html .= "</tr>";
