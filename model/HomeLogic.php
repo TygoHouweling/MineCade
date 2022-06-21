@@ -49,6 +49,31 @@ class HomeLogic
     } catch (Exception $e) {
         throw $e;
 
+        }
     }
+
+    public function signUp($id, $eventID) {
+        try{
+            $sql = "SELECT `users_id` FROM `users`";
+            $results = $this->DataHandler->readData($sql);
+            return $results;
+
+            $sql = "SELECT `event_id` FROM `events`";
+            $results = $this->DataHandler->readData($sql);
+            return $results;
+
+        }catch(Exception $e){
+            throw $e;
+        }
     }
+
+      public function signedUp($userID, $eventID) {
+        try {
+            $sql = "INSERT INTO `event_users` (`userID`, `eventID`) VALUES ('$userID','$eventID')";
+            $html = $this->DataHandler->createData($sql);
+            return $html;
+        }catch(Exception $e){
+            throw $e;
+            }
+      }
 }

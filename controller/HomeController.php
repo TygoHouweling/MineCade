@@ -29,6 +29,15 @@ class HomeController
                 case 'calendar':
                     $this->readCalendar();
                     break;
+
+                case 'signUp':
+                    $this->signUp();
+                    break;
+
+                case 'signedUp':
+                    $this->signedUp();
+                    break;
+
                 default:
                     $this->readHomeFile();
                     break;
@@ -59,5 +68,28 @@ class HomeController
         $eventLocation = isset($_REQUEST['event_location']) ? $_REQUEST['event_location'] : NULL;
         $html = $this->HomeLogic->readCalendar($eventName, $eventDate, $eventLocation);
         include 'view/calendar/calendarView.php';
+    }
+
+    public function signUp(){
+        $id = isset($_REQUEST['users_id']) ? $_REQUEST['users_id'] : NULL;
+        $eventID = isset($_REQUEST['event_id']) ? $_REQUEST['event_id'] : NULL;
+
+        $html = $this->HomeLogic->signUp($id, $eventID);
+
+        include('view/eventsignUp.php');
+    } 
+
+    public function signedUp()
+    {
+        if(isset($_REQUEST['confirm'])&&$_REQUEST['confirm']=='true'){
+
+            $userID = $_SESSION['id'];
+            $eventID = $_REQUEST['event_id'];
+
+        $html = $this->HomeLogic->signedUp($userID, $eventID);
+
+        unset($_REQUEST['submit']);
+        }
+        include('view/signedUp.php');
     }
 }
